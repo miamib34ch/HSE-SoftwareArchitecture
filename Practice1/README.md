@@ -38,6 +38,7 @@
   - Обеспечивает безопасное и эффективное хранение загруженных материалов.  
 
 # 3. Диаграмма вариантов использования для функциональных требований  
+## Диаграмма прецедентов для функциональных требований мобильного клиента экскурсовода
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/1461f1b6-5e18-4b01-9de8-90162a685c66)  
 [Онлайн версия](https://kroki.io/plantuml/svg/eNqNVc1u00AQvu9TjHJPVSfp7wFV4hl4ACs1JaI0kLgnhNSkVBQC5ILEBQkQXJHcNCapnaSvMPtGfLNrO3Gw2x42WXtmvm-_-VkfdH2345--OFbq2Hvqk9-mTuvomU-HrY7X9FvtE6Xcpt_uUIX_cKR7WOf6DP8LHmGNK-R2CR5KvXSbz90jD47fYLjiKcf6I8_1gG-II47xIsRjn_SnIiAOKvRaEZ12vabb9ejJY0egK_yTF7qn-xzALxYIASKecYDwS6xzGAFCCiCxHpLuCzK8JuJUyWHWLOZXoF1LKHwiDixan0MTFoBG8PiWFwbU8i_41phncHtn3a1Ca9dDnuW56pbrB3x7iYK5UVvKqIR1LExYMbxFrcTcEPxC8VsS8jRP17B0v2E9A_oUv0IWJAkzZxgYoghE8_QMWQ71gNYSmMge5Xm2LM8XU-R8UcQduQnBIARKlAIcMvMQ2xbil9hRgfSIZnttpCdpUglixFOyRy5B3ClBlFRCh32hhw_G2y3uE1P0KM2LHugLVVTIPNZeac-FSPhU8nQvhrP58MZVeJAkYOIgdS6nJP02aYugqKSOk7WqGZpQv18O2iSj_Gv7sVQ2gTsZE1EWJp2RnCDNfKAv1tiTofxusEYYpAkaddm5hRrRYqsjgYCZVPtKfzAVkmFbG0ennt0n0DT-fzCi9Yly7hmpV50qguzdpd6Yi5Kq1UcSubKvrezrK_uGUnLHbWzIw9Y-mY6P9We5XCC2v2LdvtO6U2BVctVZ825hcGrdu9PqbO5LmuUCuxT5qE2CXk89nEKAzFwrA2ikHvVCgMzcKAY48E4O5bP1D6PAyBk=)
 
@@ -94,8 +95,40 @@ UC4 ..> UC14: расширяет
 
 @enduml
 ```
+## Диаграмма прецедентов для функциональных требований мобильного клиента туриста
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/257aaf23-b62b-4bce-bf8d-79a4e2c861cc)  
+[Онлайн версия](https://kroki.io/plantuml/svg/eNqFUstOwkAU3c9X3HQPiTwTFobEb_ADmlKRiCBtWRmTtiwkwcfSjdHoF1SkobS2_sKdP_JMQQQCMc2kM_fcc-69Z6ZpO7rlDC-7QnTNM4ecPlmd9rlDrY5lGk6n3xNCN5y-RRq_y5F0OZKe9DXSbUJcXOnGhd42gT5zxh8ccSLvOJUTXhDHnCAQ4uiT9P_YHGh0LYiGtmnotkmnJ0dKT-MnDvhTunLEc5AD4i8OcByrEGgZT7UtWmlJe4VwJj1kZyjj_ksrH6DNkPqNlXCqusaX8UIgK0Rf-VwqH4rRtl5lqfcCJEbNicrgkJDqwYgEKrGQ98A8LLiAP3rCmsGJLaXqUulN3sIpH-QpKqe52sAqwJMsb3JnntqBeeLcBsigFaGMgCxiSNgZoH5AIEXyfN0DbjQSuUW4xXVspRtyrImb_LFQoXCs7nRjX9rYl4W672JR7SsNgjzeiXyARsCh9DfQaoPQUQAXxyjpyscVXlrhtb3sX7S-BxVNs9fCa_8BR8SPDA==)  
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/b32c9503-c4f4-4e6f-89f7-fbc9c297569f)
+```PlantUML
+@startuml
+
+left to right direction
+
+actor "Турист" as act
+package "Мобильный клиент туриста" {
+  usecase UC1 as "Загрузка маршрутов"
+  usecase UC2 as "Просмотр маршрутов"
+  usecase UC3 as "Просмотр дополненной
+реальности"
+  usecase UC4 as "Открытие ссылок
+экскурсовода"
+  usecase UC5 as "Считывание qr-кодов"
+  usecase UC6 as "Просмотр карты с
+точками"
+  usecase UC7 as "Просмотр названий и
+описаний точек"
+}
+
+act --> UC1
+act --> UC2
+act --> UC3
+UC1 ..> UC4: включает
+UC1 ..> UC5: расширяет
+UC2 ..> UC6: включает
+UC2 ..> UC7: включает
+
+@enduml
+```
 
 # 4. Перечень сделанных предположений  
 * **Технические предположения:**  
