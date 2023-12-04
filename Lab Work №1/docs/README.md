@@ -39,101 +39,16 @@
 
 # 3. Диаграмма вариантов использования для функциональных требований  
 ## Диаграмма прецедентов для функциональных требований мобильного клиента экскурсовода
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/1461f1b6-5e18-4b01-9de8-90162a685c66)  
-[Онлайн версия](https://kroki.io/plantuml/svg/eNqNVc1u00AQvu9TjHJPVSfp7wFV4hl4ACs1JaI0kLgnhNSkVBQC5ILEBQkQXJHcNCapnaSvMPtGfLNrO3Gw2x42WXtmvm-_-VkfdH2345--OFbq2Hvqk9-mTuvomU-HrY7X9FvtE6Xcpt_uUIX_cKR7WOf6DP8LHmGNK-R2CR5KvXSbz90jD47fYLjiKcf6I8_1gG-II47xIsRjn_SnIiAOKvRaEZ12vabb9ejJY0egK_yTF7qn-xzALxYIASKecYDwS6xzGAFCCiCxHpLuCzK8JuJUyWHWLOZXoF1LKHwiDixan0MTFoBG8PiWFwbU8i_41phncHtn3a1Ca9dDnuW56pbrB3x7iYK5UVvKqIR1LExYMbxFrcTcEPxC8VsS8jRP17B0v2E9A_oUv0IWJAkzZxgYoghE8_QMWQ71gNYSmMge5Xm2LM8XU-R8UcQduQnBIARKlAIcMvMQ2xbil9hRgfSIZnttpCdpUglixFOyRy5B3ClBlFRCh32hhw_G2y3uE1P0KM2LHugLVVTIPNZeac-FSPhU8nQvhrP58MZVeJAkYOIgdS6nJP02aYugqKSOk7WqGZpQv18O2iSj_Gv7sVQ2gTsZE1EWJp2RnCDNfKAv1tiTofxusEYYpAkaddm5hRrRYqsjgYCZVPtKfzAVkmFbG0ennt0n0DT-fzCi9Yly7hmpV50qguzdpd6Yi5Kq1UcSubKvrezrK_uGUnLHbWzIw9Y-mY6P9We5XCC2v2LdvtO6U2BVctVZ825hcGrdu9PqbO5LmuUCuxT5qE2CXk89nEKAzFwrA2ikHvVCgMzcKAY48E4O5bP1D6PAyBk=)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/e8518dc0-c793-4323-9d79-004a9c1e12b4)
 
-```PlantUML
-@startuml
-
-left to right direction
-
-actor "Экскурсовод" as act
-package "Мобильный клиент экскурсовода" {
-  usecase UC1 as "Составление маршрутов 
-для туризма"
-  usecase UC2 as "Загрузка материалов по 
-достопримечательностям"
-  usecase UC3 as "Расстановка материалов 
-в дополненной реальности"
-  usecase UC4 as "Формирование ссылок 
-на маршруты для туристов"
-  usecase UC5 as "Добавление точек на
-карте"
-  usecase UC6 as "Указание заголовка
-точки на карте"
-  usecase UC7 as "Указание описания
-точки на карте"
-  usecase UC8 as "Загрузка текстовых
-материалов"
-  usecase UC9 as "Загрузка медиа
-материалов"
-  usecase UC10 as "Загрузка материалов
-различных форматов"
-  usecase UC11 as "Размещение загруженных
-материалов в
-определенных точках"
-  usecase UC12 as "Привязывание материалов
-к реальным объектам"
-  usecase UC13 as "Создание ссылки"
-  usecase UC14 as "Формирование qr-кода"
-}
-
-act --> UC1
-act --> UC2
-act --> UC3
-act --> UC4
-UC1 ..> UC5: включает
-UC1 ..> UC6: включает
-UC1 ..> UC7: включает
-UC2 ..> UC8: включает
-UC2 ..> UC9: включает
-UC2 ..> UC10: расширяет
-UC3 ..> UC11: включает
-UC3 ..> UC12: расширяет
-UC4 ..> UC13: включает
-UC4 ..> UC14: расширяет
-
-@enduml
-```
 ## Диаграмма прецедентов для функциональных требований мобильного клиента туриста
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/257aaf23-b62b-4bce-bf8d-79a4e2c861cc)  
-[Онлайн версия](https://kroki.io/plantuml/svg/eNqFUstOwkAU3c9X3HQPiTwTFobEb_ADmlKRiCBtWRmTtiwkwcfSjdHoF1SkobS2_sKdP_JMQQQCMc2kM_fcc-69Z6ZpO7rlDC-7QnTNM4ecPlmd9rlDrY5lGk6n3xNCN5y-RRq_y5F0OZKe9DXSbUJcXOnGhd42gT5zxh8ccSLvOJUTXhDHnCAQ4uiT9P_YHGh0LYiGtmnotkmnJ0dKT-MnDvhTunLEc5AD4i8OcByrEGgZT7UtWmlJe4VwJj1kZyjj_ksrH6DNkPqNlXCqusaX8UIgK0Rf-VwqH4rRtl5lqfcCJEbNicrgkJDqwYgEKrGQ98A8LLiAP3rCmsGJLaXqUulN3sIpH-QpKqe52sAqwJMsb3JnntqBeeLcBsigFaGMgCxiSNgZoH5AIEXyfN0DbjQSuUW4xXVspRtyrImb_LFQoXCs7nRjX9rYl4W672JR7SsNgjzeiXyARsCh9DfQaoPQUQAXxyjpyscVXlrhtb3sX7S-BxVNs9fCa_8BR8SPDA==)  
-
-```PlantUML
-@startuml
-
-left to right direction
-
-actor "Турист" as act
-package "Мобильный клиент туриста" {
-  usecase UC1 as "Загрузка маршрутов"
-  usecase UC2 as "Просмотр маршрутов"
-  usecase UC3 as "Просмотр дополненной
-реальности"
-  usecase UC4 as "Открытие ссылок
-экскурсовода"
-  usecase UC5 as "Считывание qr-кодов"
-  usecase UC6 as "Просмотр карты с
-точками"
-  usecase UC7 as "Просмотр названий и
-описаний точек"
-}
-
-act --> UC1
-act --> UC2
-act --> UC3
-UC1 ..> UC4: включает
-UC1 ..> UC5: расширяет
-UC2 ..> UC6: включает
-UC2 ..> UC7: включает
-
-@enduml
-```
 
 # 4. Перечень сделанных предположений  
 * **Технические предположения:**  
   - Использование нативных API для разработки мобильных клиентов под iOS.  
-  - Реализация дополненной реальности не требует физического перемещения туриста на точку.  
+  - Реализация дополненной реальности не требует физического перемещения туриста на точку.
+  - "Загрузка материалов" экскурсоводами не связана с "Расстановкой материалов", загрузка подразумевает отправку данных в систему, а расстановка уже размещение в ar пространстве раннее загруженных данных.
 * **Бизнес-предположения:**  
   - Турфирмы/экскурсоводы сами предоставляют приложение туристам, чтобы сделать маршруты более привлекательными.  
 
