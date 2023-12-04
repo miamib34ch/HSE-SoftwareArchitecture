@@ -1,6 +1,6 @@
 # Диаграмма системного контекста
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/db5ce57c-38c0-4096-bdd7-ec3405998aac)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/23bc5b86-e6f2-44ae-8af9-7c1f055bcfdc)
 
 # Диаграмма контейнеров с пояснениями по выбору базового архитектурного стиля / архитектуры уровня приложений
 
@@ -21,5 +21,7 @@
 * **Поддержка адаптации интерфейса:** Эта архитектура позволяет легко адаптировать пользовательский интерфейс под разные разрешения экранов, что важно для поддержки разных устройств iOS.
 
 ## Диаграмма контейнеров
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/db5ce57c-38c0-4096-bdd7-ec3405998aac)
 
 # Диаграмма компонентов
