@@ -25,3 +25,15 @@
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/db5ce57c-38c0-4096-bdd7-ec3405998aac)
 
 # Диаграмма компонентов
+
+## Мобильное приложение туристов 
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/5bf8086a-9920-4fdd-be2a-be753ca9e9ff)
+
+## Мобильное приложение экскурсоводов
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/698abc01-f6dc-4a40-9b46-351f0723c0b8)
+
+## Сервер
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/c0993b9a-b2bd-432a-9faf-9d165e58bd71)
