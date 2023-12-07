@@ -1,6 +1,6 @@
 # Диаграмма компонентов для мобильного приложения туристов
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/5bf8086a-9920-4fdd-be2a-be753ca9e9ff)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/da7a70c0-beb5-4b1e-89eb-9ae8ca3b23a8)
 
 # Диаграмма последовательности
 
