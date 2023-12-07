@@ -22,7 +22,7 @@
 
 ## Диаграмма контейнеров
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/db5ce57c-38c0-4096-bdd7-ec3405998aac)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/4da868e7-ac45-4c44-b14f-b9cf9d5c0092)
 
 # Диаграмма компонентов
 
