@@ -1,6 +1,6 @@
 # Диаграмма системного контекста
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/23bc5b86-e6f2-44ae-8af9-7c1f055bcfdc)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/77dc19b3-5fd1-4cbb-b413-8b35e6912a17)
 
 # Диаграмма контейнеров с пояснениями по выбору базового архитектурного стиля / архитектуры уровня приложений
 
