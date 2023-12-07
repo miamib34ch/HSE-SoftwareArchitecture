@@ -28,12 +28,13 @@
 
 ## Мобильное приложение туристов 
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/5bf8086a-9920-4fdd-be2a-be753ca9e9ff)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/76582c09-d036-4133-9c0d-610f9ea71001)
 
 ## Мобильное приложение экскурсоводов
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/698abc01-f6dc-4a40-9b46-351f0723c0b8)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/f265637b-0a63-4d1e-81b4-aad4e03e3d30)
 
 ## Сервер
 
-![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/c0993b9a-b2bd-432a-9faf-9d165e58bd71)
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/afaeaff4-96ca-4473-a504-622b965bba51)
+
