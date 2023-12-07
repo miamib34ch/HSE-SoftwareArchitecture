@@ -4,3 +4,4 @@
 
 # Диаграмма последовательности
 
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/11298299-325b-4aa8-8794-736101583364)
