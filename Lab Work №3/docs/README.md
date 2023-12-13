@@ -71,84 +71,101 @@
    - Связана с точками интереса.
 
 # Код с учетом принципов KISS, YAGNI, DRY и SOLID.
+```Swift
+import UIKit
 
-   ```Swift
-
-   protocol Service {
-      associatedtype T
+protocol Service {
+    associatedtype T
+    var data: T { get set }
     
-      func fetchData(id: Any, completion: @escaping (T?, Error?) -> Void)
-   }
-   
-   class RouteService: Service {
-      typealias T = [Route]
+    func fetchData(id: Any, completion: @escaping (T?, Error?) -> Void)
+}
+
+struct Route {
+    // Реализация структуры согласно бд
+}
+
+struct PointOfInterest {
+    // Реализация структуры согласно бд
+}
+
+class RouteService: Service {
+    typealias T = [Route]
+    var data: [Route] = []
     
-      func fetchData(id: String, completion: @escaping ([Route]?, Error?) -> Void) {
-         // Логика получения маршрутов из сети или хранилища данных
-         // ...
+    func fetchData(id: Any, completion: @escaping ([Route]?, Error?) -> Void) {
+        // Логика получения маршрута
+        // ...
         
-         // В случае успеха
-         completion(routes, nil)
+        // В случае успеха
+        completion(data, nil)
         
-         // В случае ошибки
-         completion(nil, error)
-      }
-   }
+        // В случае ошибки
+        completion(nil, error)
+    }
+}
 
-   class PointOfInterestService: Service {
-      typealias T = [PointOfInterest]
+class PointOfInterestService: Service {
+    typealias T = [PointOfInterest]
+    var data: [PointOfInterest] = []
     
-      func fetchData(id: Int, completion: @escaping ([PointOfInterest]?, Error?) -> Void) {
-         // Логика получения точек интереса для конкретного маршрута
-         // ...
+    func fetchData(id: Any, completion: @escaping ([PointOfInterest]?, Error?) -> Void) {
+        // Логика получения точек интереса для конкретного маршрута
+        // ...
         
-         // В случае успеха
-         completion(pointsOfInterest, nil)
+        // В случае успеха
+        completion(data, nil)
         
-         // В случае ошибки
-         completion(nil, error)
-      }
-   }
+        // В случае ошибки
+        completion(nil, error)
+    }
+}
 
-   class MainViewControler: UIViewController {
-   
-      var service: Service = RouteService()
-      let link = "http://url.com/route"
-      let routeId = 123
-
-      // Получение маршрутов
-      service.fetchData(id: link) { (routes, error) in
-         if let routes = routes {
-           // Обработка маршрутов
-         } else if let error = error {
-           // Обработка ошибки
-         }
-      }
-   
-      service = PointOfInterestService()
-
-      // Получение точек интереса для конкретного маршрута
-      pointOfInterestService.fetchData(routeId: routeId) { (pointsOfInterest, error) in
-         if let pointsOfInterest = pointsOfInterest {
-            // Обработка точек интереса
-         } else if let error = error {
-            // Обработка ошибки
-         }
-      }
-   }
-   ```
-   * **Принцип KISS (Keep It Simple, Stupid):**  
-     Классы `RouteService` и `PointOfInterestService` предоставляют простые методы для получения маршрутов и точек интереса соответственно. Они скрывают сложность внутренней реализации, обеспечивая клиентскому коду простоту взаимодействия (строки 121 и 132 этого .md файла).
-   * **Принцип единственной ответственности (SOLID):**  
-      * S: Каждый из этих классов имеет одну основную ответственность - предоставление данных о маршрутах или точках интереса. Это облегчает поддержку, расширение и изменение кода.
-      * O: Используем протокол `Service`, который позволяет добавлять новые переменные и методы, не изменяя существующий код.
-      * L: Наследование не используется, не продемонстровано. Swift, на котором пишу код, больше не про ООП, а протокольно-ориентированный. 
-      * I: В данном коде нет классов-клиентов, которые нереализовывали бы какие-либо методы протоколов. Все протоколы содержат лишь необходимые методы.
-      * D: Создаём объект типа `Service` и можем ему подсовывать любые сервисы, выполняющие этот проткол.
-   * **Принцип DRY (Don't Repeat Yourself):**  
-     Логика обработки ответа от сервисов вынесена в замыкания обработчиков (`completion`), что позволяет избежать повторения кода при обработке результатов.
-   * **Принцип YAGNI (You Aren't Gonna Need It):**  
-     Реализована только минимально необходимая функциональность для получения маршрутов и точек интереса. Ненужные функции или избыточные детали отсутствуют. Например, не стали реализовывать удаление маршрутов, сейчас это не требуется и в постановке про это не сказано.
+class MainViewControler: UIViewController {
+    
+    var service: (any Service)?
+    let link = "http://url.com/route"
+    let routeId = 123
+    
+    func getRoute() {
+        service = RouteService()
+        
+        // Получение маршрута
+        service?.fetchData(id: link) { (routes, error) in
+            if let routes = routes {
+                // Обработка маршрутов
+            } else if let error = error {
+                // Обработка ошибки
+            }
+        }
+    }
+    
+    func getPointsOfInterest() {
+        service = PointOfInterestService()
+        
+        // Получение точек интереса для конкретного маршрута
+        service?.fetchData(id: routeId) { (pointsOfInterest, error) in
+            if let pointsOfInterest = pointsOfInterest {
+                // Обработка точек интереса
+            } else if let error = error {
+                // Обработка ошибки
+            }
+        }
+    }
+}
+```
+* **Принцип KISS (Keep It Simple, Stupid):**  
+  Классы `RouteService` и `PointOfInterestService` предоставляют простые методы для получения маршрутов и точек интереса соответственно. Они скрывают сложность внутренней реализации, обеспечивая клиентскому коду простоту взаимодействия (строки 134 и 147 этого .md файла).
+* **Принцип единственной ответственности (SOLID):**  
+   * S: Каждый из этих классов имеет одну основную ответственность - предоставление данных о маршрутах или точках интереса. Это облегчает поддержку, расширение и изменение кода.
+   * O: Используем протокол `Service`, который позволяет добавлять новые переменные и методы, не изменяя существующий код.
+   * L: Наследование не используется, не продемонстровано. Swift, на котором пишу код, больше не про ООП, а протокольно-ориентированный. 
+   * I: В данном коде нет классов-клиентов, которые нереализовывали бы какие-либо методы протоколов. Все протоколы содержат лишь необходимые методы.
+   * D: Создаём объект типа `Service` и можем ему подсовывать любые сервисы, выполняющие этот проткол.
+* **Принцип DRY (Don't Repeat Yourself):**  
+  Логика обработки ответа от сервисов вынесена в замыкания обработчиков (`completion`), что позволяет избежать повторения кода при обработке результатов.
+* **Принцип YAGNI (You Aren't Gonna Need It):**  
+  Реализована только минимально необходимая функциональность для получения маршрутов и точек интереса. Ненужные функции или избыточные детали отсутствуют. Например, не стали реализовывать удаление маршрутов, сейчас это не требуется и в постановке про это не сказано.
 
 # Другие принципы разработки: 
 
