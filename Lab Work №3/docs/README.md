@@ -69,3 +69,69 @@
 5. **`ARComponent` (AR-компонента):**
    - Содержит данные для расположения в пространстве в контексте дополненной реальности (AR).
    - Связана с точками интереса.
+
+# Код с учетом принципов KISS, YAGNI, DRY и SOLID.
+
+1. **KISS и SOLID:**  
+   ```Swift
+   class RouteService {
+    
+      func getRoutes(completion: @escaping ([Route]?, Error?) -> Void) {
+         // Логика получения маршрутов из сети или хранилища данных
+         // ...
+        
+         // В случае успеха
+         completion(routes, nil)
+        
+         // В случае ошибки
+         completion(nil, error)
+      }
+   }
+
+   class PointOfInterestService {
+    
+      func getPointsOfInterest(routeId: Int, completion: @escaping ([PointOfInterest]?, Error?) -> Void) {
+         // Логика получения точек интереса для конкретного маршрута
+         // ...
+        
+         // В случае успеха
+         completion(pointsOfInterest, nil)
+        
+         // В случае ошибки
+         completion(nil, error)
+       }
+   }
+   ```
+   * **Принцип KISS (Keep It Simple, Stupid):**  
+     Классы RouteService и PointOfInterestService предоставляют простые методы для получения маршрутов и точек интереса соответственно. Они скрывают сложность внутренней реализации, обеспечивая клиентскому коду простоту взаимодействия.
+   * **Принцип единственной ответственности (SOLID):**  
+   * Каждый из этих классов имеет одну основную ответственность - предоставление данных о маршрутах или точках интереса. Это облегчает поддержку, расширение и изменение кода.
+2. **YAGNI и DRY:**  
+   ```Swift
+   let routeService = RouteService()
+   let pointOfInterestService = PointOfInterestService()
+
+   // Получение маршрутов
+   routeService.getRoutes { (routes, error) in
+      if let routes = routes {
+        // Обработка маршрутов
+       } else if let error = error {
+        // Обработка ошибки
+       }
+   }
+
+   // Получение точек интереса для конкретного маршрута
+   let routeId = 123
+   pointOfInterestService.getPointsOfInterest(routeId: routeId) { (pointsOfInterest, error) in
+      if let pointsOfInterest = pointsOfInterest {
+         // Обработка точек интереса
+      } else if let error = error {
+         // Обработка ошибки
+      }
+   }
+   ```
+   * Продемонстрована простота использования (относится к приницпу KISS)
+   * **Принцип DRY (Don't Repeat Yourself):**  
+     Логика обработки ответа от сервисов вынесена в замыкания обработчиков (completion), что позволяет избежать повторения кода при обработке результатов.
+   * **Принцип YAGNI (You Aren't Gonna Need It):**  
+     Реализована только минимально необходимая функциональность для получения маршрутов и точек интереса. Ненужные функции или избыточные детали отсутствуют. Например, не стали реализовывать удаление маршрутов, сейчас это не требуется и в постановке про это не сказано.
