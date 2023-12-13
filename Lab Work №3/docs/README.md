@@ -115,9 +115,9 @@
    routeService.getRoutes { (routes, error) in
       if let routes = routes {
         // Обработка маршрутов
-       } else if let error = error {
+      } else if let error = error {
         // Обработка ошибки
-       }
+      }
    }
 
    // Получение точек интереса для конкретного маршрута
