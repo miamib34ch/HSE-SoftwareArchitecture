@@ -72,7 +72,6 @@
 
 # Код с учетом принципов KISS, YAGNI, DRY и SOLID.
 
-1. **KISS и SOLID:**  
    ```Swift
 
    protocol Service {
