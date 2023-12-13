@@ -133,7 +133,7 @@ class MainViewControler: UIViewController {
         // Получение маршрута
         service?.fetchData(id: link) { (routes, error) in
             if let routes = routes {
-                // Обработка маршрутов
+                // Обработка маршрута
             } else if let error = error {
                 // Обработка ошибки
             }
