@@ -6,6 +6,95 @@
 
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/11298299-325b-4aa8-8794-736101583364)
 
+```PlantUML
+@startuml
+
+actor Турист as Tourist
+participant "Карта" as MobileApp
+participant "Дополненная реальность" as ARComponent
+participant "ViewModel" as ViewModel
+participant "Model" as Model
+database "Сервер" as Server
+
+Tourist -> MobileApp: Открытие приложения
+
+activate MobileApp
+Tourist -> MobileApp: Просмотр маршрута
+MobileApp -> ViewModel: Запрос маршрута
+
+activate ViewModel
+ViewModel -> Model: Запрос данных маршрута
+
+activate Model
+Model -> Server: Запрос данных маршрута
+
+activate Server
+Server --> Model: Возврат данных маршрута
+deactivate Server
+
+Model --> ViewModel: Возврат данных маршрута
+deactivate Model
+
+ViewModel --> MobileApp: Возврат маршрута
+deactivate ViewModel
+
+MobileApp --> Tourist: Отображение маршрута
+
+
+Tourist -> MobileApp: Выбор точки маршрута
+MobileApp -> ViewModel: Запрос текстовых и медиа материалов
+ 
+activate ViewModel
+ViewModel -> Model: Запрос текстовых и медиа материалов
+
+activate Model
+Model -> Server: Запрос текстовых и медиа материалов
+
+activate Server
+Server --> Model: Возврат текстовых и медиа материалов
+deactivate Server
+
+Model --> ViewModel: Возврат текстовых и медиа материалов
+deactivate Model
+
+ViewModel --> MobileApp: Возврат текстовых и медиа материалов
+deactivate ViewModel
+
+MobileApp --> Tourist: Показ точки маршрута
+
+
+Tourist -> MobileApp: Посмотреть дополненную реальность
+MobileApp -> ARComponent: Запрос данных для ar
+
+activate ARComponent
+ARComponent -> ViewModel: Запрос данных для ar
+
+activate ViewModel
+ViewModel -> Model:Запрос данных для ar
+
+activate Model
+Model -> Server: Запрос данных для ar
+
+activate Server
+Server --> Model: Возврат данных для ar
+deactivate Server
+
+Model --> ViewModel: Возврат данных для ar
+deactivate Model
+
+ViewModel --> ARComponent: Возврат данных для ar
+deactivate ViewModel
+
+ARComponent --> MobileApp: Возврат данных для ar
+deactivate ARComponent
+
+MobileApp --> Tourist: Показ дополненной реальности
+
+
+Tourist -> MobileApp: Закрытие приложения
+@enduml
+```
+
 Краткие пояснения к предоставленной диаграмме последовательности:
 
 1. **Открытие приложения:**  
@@ -69,6 +158,60 @@
 5. **`ARComponent` (AR-компонента):**
    - Содержит данные для расположения в пространстве в контексте дополненной реальности (AR).
    - Связана с точками интереса.
+  
+```PlantUML
+@startuml
+class Route {
+  +id: int
+  -name: string
+  -createdBy: User
+  -pointsOfInterest: Set<PointOfInterest>
+  -link: string
+}
+
+class PointOfInterest {
+  +id: int
+  -name: string
+  -description: string
+  -route: Route
+  -materials: Set<Material>
+  -arComponent: ARComponent
+  -latitude: double
+  -longitude: double
+}
+
+class Material {
+  +id: int
+  -type: string
+  -content: string
+  -pointOfInterest: PointOfInterest
+}
+
+class User {
+  +id: int
+  -username: string
+  -password: string
+  -isTourist: boolean
+  -createdRoutes: Set<Route>
+}
+
+class ARComponent {
+  +id: int
+  -name: string
+  -positionX: double
+  -positionY: double
+  -positionZ: double
+  -rotationX: double
+  -rotationY: double
+  -rotationZ: double
+}
+
+Route "1" -- "*" PointOfInterest: Contains
+PointOfInterest "1" -- "*" Material: Includes
+PointOfInterest "1" -- "0..1" ARComponent: HasARComponent
+User "1" -- "*" Route: Created
+@enduml
+```
 
 # Код с учетом принципов KISS, YAGNI, DRY и SOLID.
 ```Swift
