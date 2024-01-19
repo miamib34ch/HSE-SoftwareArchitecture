@@ -2,6 +2,38 @@
 
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/da7a70c0-beb5-4b1e-89eb-9ae8ca3b23a8)
 
+```PlantUML
+@startuml "messagebus"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+' uncomment the following line and comment the first to use locally
+' !include C4_Container.puml
+
+AddElementTag("microService", $shape=EightSidedShape(), $bgColor="CornflowerBlue", $fontColor="white", $legendText="micro service\neight sided")
+AddElementTag("storage", $shape=RoundedBoxShape(), $bgColor="lightSkyBlue", $fontColor="white")
+
+SHOW_PERSON_OUTLINE()
+
+Person(mt, Туристы, "Получают маршруты и просматривают их")
+System(s, "Сервер", "Ответственен за обработку и передачу данных", $type="Container / C#, .NET")
+Boundary(c, "Клиент туристов", "Container / iOS, Swift") {
+Container(v, "Карта", "Component: UI View", "Экраны для просмотра маршрутов и точек на карте.")
+Container(vm, "ViewModel", "Component: Controller", "Логика, управляющая данными и взаимодействием с View.")
+Container(m, "Model", "Component: Model", "Хранит данные о маршрутах и материалах. Обрабатывает запросы от ViewModel.")
+Container(ar, "Дополненная реальность", "Component: UI View", "Компонент, реализующий взаимодействие с технологией дополненной реальности.")
+}
+Rel_D(mt, v, "Нажатие кнопок (пользовательское взаимодействие)")
+Rel_D(mt, ar, "Нажатие кнопок (пользовательское взаимодействие)")
+Rel_D(v, vm, "Отправка пользовательского взаимодействия")
+Rel_D(vm, v, "Уведомление об обновлении данных")
+BiRel(vm, m, "Получение и обновления данных о маршрутах и материалах")
+Rel_D(vm, ar, "Уведомление об обновлении данных")
+BiRel(m, s, "Получение данных о маршрутах и материалах")
+Rel_D(ar, vm, "Отправка пользовательского взаимодействия")
+
+SHOW_LEGEND()
+@enduml
+```
+
 # Диаграмма последовательности
 
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/11298299-325b-4aa8-8794-736101583364)
