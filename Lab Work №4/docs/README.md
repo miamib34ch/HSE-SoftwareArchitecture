@@ -1,14 +1,38 @@
 # Лабораторная работа №4 REST API
 
 Работу выполнили: [Полыгалов Богдан](https://github.com/miamib34ch) и [Тетенова Алёна](https://github.com/alenatetenova)
- 
-## Документация по API
 
-### Работа с пользователем
+**Оглавление:**
+- [Документация по API](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-%D0%BF%D0%BE-api)
+ - [Работа с пользователем](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%BC)
+  - [POST /user/](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#post-user)
+  - [GET /user/{user_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#get-useruser_id)
+  - [PUT /user/{user_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#put-useruser_id)
+  - [DELETE /user/{user_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#delete-useruser_id)
+ - [Работа с маршрутом](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%BE%D0%BC)
+  - [POST /route/](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#post-route)
+  - [GET /route/{route_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#get-routeroute_id)
+  - [PUT /route/{route_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#put-routeroute_id)
+  - [DELETE /route/{route_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#delete-routeroute_id)
+ - [Работа с точкой интереса на маршруте](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D1%82%D0%BE%D1%87%D0%BA%D0%BE%D0%B9-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%B0-%D0%BD%D0%B0-%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B5)
+  - [POST /point/](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#post-point)
+  - [GET /point/{point_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#get-pointpoint_id)
+  - [PUT /point/{point_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#put-pointpoint_id)
+  - [DELETE /point/{point_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#delete-pointpoint_id)
+ - [Работа с материалами](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%B0%D0%BC%D0%B8)
+  - [POST /material/](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#post-material)
+  - [GET /material/{material_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#get-materialmaterial_id)
+  - [PUT /material/{material_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#put-materialmaterial_id)
+  - [DELETE /material/{material_id}](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#delete-materialmaterial_id)
+- [Реализация API](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-api)
+- [Тестирование API](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-api)
+
+## *Документация по API*
+
+### *Работа с пользователем*
 
 
-
-#### POST /user/
+#### *POST /user/*
 
 **Описание:** Создание пользователя
 
@@ -51,7 +75,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"username":"john_doe","ema
 
 
 
-#### GET /user/{user_id}
+#### *GET /user/{user_id}*
 
 **Описание:** Получение данных о пользователе
 
@@ -88,7 +112,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 
 
 
-#### PUT /user/{user_id}
+#### *PUT /user/{user_id}*
 
 **Описание:** Обновление данных пользователя
 
@@ -134,7 +158,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ва�
 ```
 
 
-#### DELETE /user/{user_id} 
+#### *DELETE /user/{user_id}*
 
 **Описание:** Удаление пользователя
 
@@ -166,9 +190,9 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 ```
 
 
-### Работа с маршрутом
+### *Работа с маршрутом*
 
-#### POST /route/
+#### *POST /route/*
 
 **Описание:** Создание маршрута
 
@@ -268,7 +292,7 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ва
 ```
 
 
-#### GET /route/{route_id}
+#### *GET /route/{route_id}*
 
 **Описание:** Получение данных о маршруте
 
@@ -333,7 +357,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 ```
 
 
-#### PUT /route/{route_id}
+#### *PUT /route/{route_id}*
 
 **Описание:** Обновление данных о маршруте
 
@@ -398,7 +422,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ва�
 ```
 
 
-#### DELETE /route/{route_id}
+#### *DELETE /route/{route_id}*
 
 **Описание:** Удаление маршрута
 
@@ -410,7 +434,7 @@ Query:
 - `route_id` (число) - Идентификатор маршрута, который необходимо удалить.
 
 **Пример входных параметров:**
-```json
+```
 /route/456
 ```
 
@@ -430,9 +454,9 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 ```
 
 
-### Работа с точкой интереса на маршруте
+### *Работа с точкой интереса на маршруте*
 
-#### POST /point/
+#### *POST /point/*
 
 **Описание:** Создание точки интереса
 
@@ -487,7 +511,7 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ва
 
 
 
-#### GET /point/{point_id}
+#### *GET /point/{point_id}*
 
 **Описание:** Получение данных о точке интереса
 
@@ -528,7 +552,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 ```
 
 
-#### PUT /point/{point_id}
+#### *PUT /point/{point_id}*
 
 **Описание:** Обновление данных о точки интереса
 
@@ -583,7 +607,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ва�
 ```
 
 
-#### DELETE /point/{point_id}
+#### *DELETE /point/{point_id}*
 
 **Описание:** Удаление точки интереса
 
@@ -616,9 +640,9 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 
 
-### Работа с материалами
+### *Работа с материалами*
 
-#### POST /material/
+#### *POST /material/*
 
 **Описание:** Загрузка материала
 
@@ -654,7 +678,7 @@ curl -X POST -H "Authorization: Bearer {ваш_токен}" -F "file=@material_p
 ```
 
 
-#### GET /material/{material_id}
+#### *GET /material/{material_id}*
 
 **Описание:** Получение материала
 
@@ -693,7 +717,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 
 
 
-#### PUT /material/{material_id}
+#### *PUT /material/{material_id}*
 
 **Описание:** Обновление материала
 
@@ -733,7 +757,7 @@ curl -X PUT -H "Authorization: Bearer {ваш_токен}" -F "file=@updated_mat
 ```
 
 
-#### DELETE /material/{material_id}
+#### *DELETE /material/{material_id}*
 
 **Описание:** Удаление материала
 
@@ -765,6 +789,6 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 ```
 
 
-## Реализация API
+## *Реализация API*
 
-## Тестирование API
+## *Тестирование API*
