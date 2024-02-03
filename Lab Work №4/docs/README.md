@@ -742,6 +742,8 @@ Body:
 **Пример входных параметров:**
 ```
 /material/9
+```
+```
 Файл: updated_material_photo.jpg
 ```
 
