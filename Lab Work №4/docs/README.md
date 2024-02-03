@@ -62,6 +62,7 @@ Body:
 **Пример ответа:**
 ```json
 {
+  "token": "debsmahdb-asdbfasbfb-e9ueyfask-dasdasasd"
   "user_id": 123,
   "username": "john_doe",
   "email": "john.doe@example.com"
