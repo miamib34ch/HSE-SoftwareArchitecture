@@ -32,7 +32,7 @@
 ### *Работа с пользователем*
 
 
-#### POST */user/*
+#### *POST /user/*
 
 **Описание:** Создание пользователя
 
@@ -75,7 +75,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"username":"john_doe","ema
 
 
 
-#### GET */user/{user_id}*
+#### *GET /user/{user_id}*
 
 **Описание:** Получение данных о пользователе
 
@@ -112,7 +112,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 
 
 
-#### PUT */user/{user_id}*
+#### *PUT /user/{user_id}*
 
 **Описание:** Обновление данных пользователя
 
@@ -158,7 +158,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ва�
 ```
 
 
-#### DELETE */user/{user_id}*
+#### *DELETE /user/{user_id}*
 
 **Описание:** Удаление пользователя
 
@@ -192,7 +192,7 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ### *Работа с маршрутом*
 
-#### POST */route/*
+#### *POST /route/*
 
 **Описание:** Создание маршрута
 
@@ -357,7 +357,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 ```
 
 
-#### PUT */route/{route_id}*
+#### *PUT /route/{route_id}*
 
 **Описание:** Обновление данных о маршруте
 
@@ -422,7 +422,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ва�
 ```
 
 
-#### DELETE */route/{route_id}*
+#### *DELETE /route/{route_id}*
 
 **Описание:** Удаление маршрута
 
@@ -456,7 +456,7 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ### *Работа с точкой интереса на маршруте*
 
-#### POST */point/*
+#### *POST /point/*
 
 **Описание:** Создание точки интереса
 
@@ -511,7 +511,7 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ва
 
 
 
-#### GET */point/{point_id}*
+#### *GET /point/{point_id}*
 
 **Описание:** Получение данных о точке интереса
 
@@ -552,7 +552,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 ```
 
 
-#### PUT */point/{point_id}*
+#### *PUT /point/{point_id}*
 
 **Описание:** Обновление данных о точки интереса
 
@@ -607,7 +607,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ва�
 ```
 
 
-#### DELETE */point/{point_id}*
+#### *DELETE /point/{point_id}*
 
 **Описание:** Удаление точки интереса
 
@@ -642,7 +642,7 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ### *Работа с материалами*
 
-#### POST */material/*
+#### *POST /material/*
 
 **Описание:** Загрузка материала
 
@@ -678,7 +678,7 @@ curl -X POST -H "Authorization: Bearer {ваш_токен}" -F "file=@material_p
 ```
 
 
-#### GET */material/{material_id}*
+#### *GET /material/{material_id}*
 
 **Описание:** Получение материала
 
@@ -717,7 +717,7 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 
 
 
-#### PUT */material/{material_id}*
+#### *PUT /material/{material_id}*
 
 **Описание:** Обновление материала
 
@@ -757,7 +757,7 @@ curl -X PUT -H "Authorization: Bearer {ваш_токен}" -F "file=@updated_mat
 ```
 
 
-#### DELETE */material/{material_id}*
+#### *DELETE /material/{material_id}*
 
 **Описание:** Удаление материала
 
