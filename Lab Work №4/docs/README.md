@@ -100,6 +100,7 @@ Query:
 **Пример ответа:**
 ```json
 {
+  "token": "debsmahdb-asdbfasbfb-e9ueyfask-dasdasasd",
   "user_id": 123,
   "username": "john_doe",
   "email": "john.doe@example.com"
@@ -132,9 +133,10 @@ Body:
 **Пример входных параметров:**
 ```json
 {
-  "username": "new_john_doe",
-  "email": "new_john.doe@example.com",
-  "password": "new_securepassword123"
+  "token": "debsmahdb-asdbfasbfb-e9ueyfask-dasdasasd",
+  "user_id": 123,
+  "username": "john_doe",
+  "email": "john.doe@example.com"
 }
 ```
 
