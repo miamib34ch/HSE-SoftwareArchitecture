@@ -132,11 +132,14 @@ Body:
 - `password` (строка, необязательно) - Новый пароль пользователя
 
 **Пример входных параметров:**
+```
+"user_id": 123
+```
 ```json
 {
-  "user_id": 123,
   "username": "john_doe",
-  "email": "john.doe@example.com"
+  "email": "john.doe@example.com",
+  "password": "securepassword123"
 }
 ```
 
