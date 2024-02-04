@@ -744,3 +744,49 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/92ec2c67-84f6-4a5c-b0b2-28eb3864bc00)
 
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/61b0d9cc-4a8a-4a0a-8acf-b621a2d3719b)
+
+### *Работа с точкой интереса на маршруте*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/55d7baf5-5966-4edb-877a-725e646f1a94)
+
+#### *POST /point/*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/68ecb1c9-a337-42ee-98d7-400c7d28d52e)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/da6e268b-e4e8-41a6-b60d-95188e8005ed)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/f084a942-acc0-4ced-9639-f58081043eed)
+
+#### *GET /point/{point_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/42cdb891-0930-4b0d-abce-472bb3db0060)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/6ccca049-2b46-4993-9346-f59863c79bde)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/484e184f-36f9-4fd8-8e8c-75357b859312)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/08d1d4d7-8fdb-4e2e-bc77-3ff679772b04)
+
+#### *PUT /point/{point_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/88a878e2-5610-44e6-99e8-064005efe73e)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/ab5966b7-b0cc-4804-bf6c-da58675fe1d7)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/38269904-11d7-4ce9-b58b-c3d0ea50d377)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/bd377354-8ffc-41eb-b160-51397c16ddb7)
+
+#### *DELETE /point/{point_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/9babddf8-b1b5-4fd9-a165-3301e34de4ae)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/7d1fd9bf-2d96-4e1f-97ee-601af199e1d4)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/e4ccd9bb-219e-4a00-a996-7f8cc4c185e4)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/2da921ac-94cf-4ef2-af47-aa1918125493)
+
+
+
+
