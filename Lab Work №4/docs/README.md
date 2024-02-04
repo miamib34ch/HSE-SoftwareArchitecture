@@ -657,4 +657,22 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ## *Реализация API*
 
+Код в папке src
+
 ## *Тестирование API*
+
+### *Работа с пользователем*
+
+#### *POST /user/*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/e5276ddf-daf2-4b30-aeb6-62bff2cf1a18)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/e7c957e9-2dc1-4976-8dee-783f7e25ae74)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/48583d57-006e-4e9b-890b-eb64e3fcabbb)
+
+#### *GET /user/{user_id}*
+
+#### *PUT /user/{user_id}*
+
+#### *DELETE /user/{user_id}*
