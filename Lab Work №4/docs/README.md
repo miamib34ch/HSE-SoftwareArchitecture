@@ -31,7 +31,6 @@
 
 ### *Работа с пользователем*
 
-
 #### *POST /user/*
 
 **Описание:** Создание пользователя
@@ -76,7 +75,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"username":"john_doe", "is
 ```
 
 
-
 #### *GET /user/{user_id}*
 
 **Описание:** Получение данных о пользователе
@@ -114,7 +112,6 @@ Query:
 ```
 curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.com/user/123
 ```
-
 
 
 #### *PUT /user/{user_id}*
@@ -200,6 +197,9 @@ Query:
 ```
 curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.example.com/user/123
 ```
+
+
+
 
 
 ### *Работа с маршрутом*
@@ -467,6 +467,9 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 ```
 
 
+
+
+
 ### *Работа с точкой интереса на маршруте*
 
 #### *POST /point/*
@@ -521,7 +524,6 @@ Body:
 ```
 curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"route_id":456,"latitude":55.7558,"longitude":37.6176,"description":"Новая точка интереса","materials":[{"material_id":7,"title":"Новый материал"}]}' https://api.example.com/point/
 ```
-
 
 
 #### *GET /point/{point_id}*
@@ -654,6 +656,8 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 
 
+
+
 ### *Работа с материалами*
 
 #### *POST /material/*
@@ -730,7 +734,6 @@ curl -X GET -H "Authorization: Bearer {ваш_токен}" https://api.example.c
 ```
 
 
-
 #### *PUT /material/{material_id}*
 
 **Описание:** Обновление материала
@@ -804,7 +807,6 @@ Query:
 ```
 curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.example.com/material/9
 ```
-
 
 ## *Реализация API*
 
