@@ -787,6 +787,27 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/2da921ac-94cf-4ef2-af47-aa1918125493)
 
+### *Работа с материалами*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/5a15de17-eb7c-4afe-a0b3-acce1f2ea1a5)
+
+#### *POST /material/*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/4d8fdb5c-fbf8-43b8-86dd-1be6be4d8d2c)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/12cf298a-c865-4b88-ae52-bea887cf0050)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/5d8654f2-cd29-420c-bbdb-055a97832a6d)
+
+#### *DELETE /material/{material_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/f0eb6d58-55d7-4db8-8045-e5ce0fbef235)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/bc2c1155-2f40-4497-9ba1-293f57056568)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/d78692cb-27f8-4a4c-bcdc-cb6d8fb0d431)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/c77899d4-982a-47e3-a610-476a63696e36)
 
 
 
