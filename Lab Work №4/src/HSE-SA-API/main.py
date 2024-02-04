@@ -8,6 +8,7 @@ from Models.Material import Material
 
 from Auth import generate_token
 
+
 app = FastAPI()
 bearer_scheme = HTTPBearer()
 
