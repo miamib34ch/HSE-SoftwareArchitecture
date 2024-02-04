@@ -703,4 +703,44 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/8db16ee5-9f68-45da-bb29-58d1d7ab65d4)
 
+### *Работа с маршрутом*
 
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/63928ffd-567b-45d8-a0c9-0143037b9162)
+
+#### *POST /route/*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/4b5a3633-fd0d-4f96-b6fb-67a9a00023bb)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/33992465-6f7f-4557-9dd6-df51c436a66d)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/f40e354e-6f5e-4bdb-a397-e0fa00b860b9)
+
+#### *GET /route/{route_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/ea8e91a4-3e12-4422-aa63-1dd13e0fbe8a)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/be39bdc4-b97a-4331-8ada-c1dd87a99a03)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/048cd07f-f1db-4016-ab07-fa9d2b6a66ad)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/0f3bf2dd-6ee0-4b9c-a759-dc2def05b5ba)
+
+#### *PUT /route/{route_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/d04ad39c-a160-4426-80c6-5985a5f698e0)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/7770b685-72ed-4a5b-8ca8-54ff3825f845)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/e01c4cb1-1c7e-4998-8547-48dbfcb807be)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/4d9af0bc-2dfd-4081-b84b-816599a7f0a1)
+
+#### *DELETE /route/{route_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/705c392d-af24-4c22-a2b5-e819c9a6f4b0)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/b1dcf3e5-aed0-4416-8df6-d30be369565a)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/92ec2c67-84f6-4a5c-b0b2-28eb3864bc00)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/61b0d9cc-4a8a-4a0a-8acf-b621a2d3719b)
