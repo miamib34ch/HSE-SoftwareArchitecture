@@ -42,14 +42,14 @@
 **Входные параметры:**  
 Body:  
 - `username` (строка) - Имя пользователя
-- `email` (строка) - Адрес электронной почты
 - `password` (строка) - Пароль пользователя
+- `is_tourist` (булевое) - Является ли пользователь туристом
 
 **Пример входных параметров:**
 ```json
 {
   "username": "john_doe",
-  "email": "john.doe@example.com",
+  "is_tourist": true,
   "password": "securepassword123"
 }
 ```
@@ -65,13 +65,14 @@ Body:
   "token": "debsmahdb-asdbfasbfb-e9ueyfask-dasdasasd",
   "user_id": 123,
   "username": "john_doe",
-  "email": "john.doe@example.com"
+  "is_tourist": true,
+  "created_routes": []
 }
 ```
 
 **cURL:**
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"username":"john_doe","email":"john.doe@example.com","password":"securepassword123"}' https://api.example.com/user/
+curl -X POST -H "Content-Type: application/json" -d '{"username":"john_doe", "is_tourist":true,"password":"securepassword123"}' https://api.example.com/user/
 ```
 
 
@@ -104,7 +105,8 @@ Query:
   "token": "debsmahdb-asdbfasbfb-e9ueyfask-dasdasasd",
   "user_id": 123,
   "username": "john_doe",
-  "email": "john.doe@example.com"
+  "is_tourist": true,
+  "created_routes": []
 }
 ```
 
@@ -128,9 +130,9 @@ Query:
 - `user_id` (число) - Идентификатор пользователя, информацию о котором необходимо обновить.
 
 Body:  
-- `username` (строка, необязательно) - Новое имя пользователя
-- `email` (строка, необязательно) - Новый адрес электронной почты
-- `password` (строка, необязательно) - Новый пароль пользователя
+- `username` (строка) - Имя пользователя
+- `password` (строка) - Пароль пользователя
+- `is_tourist` (булевое) - Является ли пользователь туристом
 
 **Пример входных параметров:**
 ```
@@ -139,7 +141,7 @@ Body:
 ```json
 {
   "username": "john_doe",
-  "email": "john.doe@example.com",
+  "is_tourist": true,
   "password": "securepassword123"
 }
 ```
@@ -156,13 +158,14 @@ Body:
   "token": "debsmahdb-asdbfasbfb-e9ueyfask-dasdasasd",
   "user_id": 123,
   "username": "john_doe",
-  "email": "john.doe@example.com"
+  "is_tourist": true,
+  "created_routes": []
 }
 ```
 
 **cURL:** 
 ```
-curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"username":"new_john_doe","email":"new_john.doe@example.com","password":"new_securepassword123"}' https://api.example.com/user/123
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"username":"new_john_doe","is_tourist": true,"password":"new_securepassword123"}' https://api.example.com/user/123
 ```
 
 
