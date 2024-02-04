@@ -274,7 +274,7 @@ Body:
 
 **cURL:** 
 ```
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"name":"Путешествие по городу","description":"Замечательный тур по основным достопримечательностям города","waypoints":[{"latitude":55.7558,"longitude":37.6176,"description":"Красная площадь","materials":[{"material_id":1,"title":"Фото Красной площади"},{"material_id":2,"title":"История Красной площади"}]},{"latitude":55.7517,"longitude":37.6188,"description":"Кремль","materials":[{"material_id":3,"title":"Фото Кремля"},{"material_id":4,"title":"История Кремля"}]},{"latitude":55.7479,"longitude":37.5841,"description":"Арбат","materials":[{"material_id":5,"title":"Фото Арбата"},{"material_id":6,"title":"История Арбата"}]}]}' https://api.example.com/route/
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"name":"Путешествие по городу","description":"Замечательный тур по основным достопримечательностям города","waypoints":[{"latitude":55.7558,"longitude":37.6176,"description":"Красная площадь"}]}' https://api.example.com/route/
 ```
 
 
