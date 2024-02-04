@@ -382,7 +382,7 @@ Body:
 
 **cURL:** 
 ```
-curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"name":"Новое название маршрута","description":"Новое описание маршрута","waypoints":[{"latitude":55.7558,"longitude":37.6176,"description":"Новая точка","materials":[{"material_id":7,"title":"Новый материал"}]}]}' https://api.example.com/route/456
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"name":"Новое название маршрута","description":"Новое описание маршрута"}' https://api.example.com/route/456
 ```
 
 
