@@ -214,7 +214,7 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 Body:  
 - `name` (строка) - Название маршрута
 - `description` (строка) - Описание маршрута
-- `waypoints` (массив объектов) - Список точек маршрута, каждая точка содержит координаты, описание и материалы.
+- `waypoints` (массив объектов) - Список точек маршрута, каждая точка содержит координаты, описание.
 
 **Пример входных параметров:**
 ```json
@@ -419,7 +419,6 @@ Body:
 - `latitude` (число) - Широта точки интереса.
 - `longitude` (число) - Долгота точки интереса.
 - `description` (строка) - Описание точки интереса.
-- `materials` (массив объектов) - Список материалов, связанных с точкой интереса.
 
 **Пример входных параметров:**
 ```json
@@ -450,7 +449,7 @@ Body:
 
 **cURL:** 
 ```
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"latitude":55.7558,"longitude":37.6176,"description":"Новая точка интереса","materials":[{"material_id":7,"title":"Новый материал"}]}' https://api.example.com/point/
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"latitude":55.7558,"longitude":37.6176,"description":"Новая точка интереса"}' https://api.example.com/point/
 ```
 
 
@@ -511,7 +510,6 @@ Body:
 - `latitude` (число, необязательно) - Новая широта точки интереса.
 - `longitude` (число, необязательно) - Новая долгота точки интереса.
 - `description` (строка, необязательно) - Новое описание точки интереса.
-- `materials` (массив объектов, необязательно) - Новый список материалов, связанных с точкой интереса.
 
 **Пример входных параметров:**
 ```
@@ -547,7 +545,7 @@ Body:
 
 **cURL:** 
 ```
-curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"latitude":55.756,"longitude":37.618,"description":"Обновленная точка интереса","materials":[{"material_id":8,"title":"Еще один новый материал"}]}' https://api.example.com/point/789
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {ваш_токен}" -d '{"latitude":55.756,"longitude":37.618,"description":"Обновленная точка интереса"}' https://api.example.com/point/789
 ```
 
 
