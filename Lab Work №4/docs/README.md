@@ -663,6 +663,8 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ### *Работа с пользователем*
 
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/a7296767-42d5-47d4-aa4e-744117e6ae36)
+
 #### *POST /user/*
 
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/e5276ddf-daf2-4b30-aeb6-62bff2cf1a18)
@@ -672,6 +674,14 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 ![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/48583d57-006e-4e9b-890b-eb64e3fcabbb)
 
 #### *GET /user/{user_id}*
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/5d28e72c-1003-465e-a1f6-67dd705ab353)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/a07569e0-39aa-43c2-97fd-bcdef6df5a2d)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/8c72cd7c-0927-44ff-bd50-d3c8b563347c)
+
+![image](https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/d1770572-73c2-4a0f-8530-12e4a98f4a37)
 
 #### *PUT /user/{user_id}*
 
