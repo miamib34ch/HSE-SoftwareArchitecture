@@ -290,6 +290,7 @@ async def delete_point(point_id: int, our_user: bool = Depends(find_user)):
     return {}
 
 
+# Material
 @app.post("/material/", response_model=Material, status_code=201)
 async def create_material(file: UploadFile = File(...), our_user: bool = Depends(find_user)):
     if not our_user:
