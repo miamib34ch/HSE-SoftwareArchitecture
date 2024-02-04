@@ -248,10 +248,7 @@ Body:
       "latitude": 55.7558,
       "longitude": 37.6176,
       "description": "Красная площадь",
-      "materials": [
-        {"material_id": 1, "title": "Фото Красной площади"},
-        {"material_id": 2, "title": "История Красной площади"}
-      ]
+      "materials": []
     }
   ]
 }
