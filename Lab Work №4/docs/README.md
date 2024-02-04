@@ -675,7 +675,7 @@ curl -X DELETE -H "Authorization: Bearer {ваш_токен}" https://api.exampl
 
 ## *Реализация API*
 
-Код в папке src
+[Код Python FastApi в папке src](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/src/HSE-SA-API)
 
 ## *Тестирование API*
 
