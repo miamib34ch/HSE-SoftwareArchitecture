@@ -1,7 +1,5 @@
 # Лабораторная работа №4 REST API
 
-Работу выполнили: [Полыгалов Богдан](https://github.com/miamib34ch) и [Тетенова Алёна](https://github.com/alenatetenova)
-
 **Оглавление:**
 - [Документация по API](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-%D0%BF%D0%BE-api)
   - [Работа с пользователем](https://github.com/miamib34ch/HSE-SoftwareArchitecture/tree/LabWork4/Lab%20Work%20%E2%84%964/docs#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%BC)
