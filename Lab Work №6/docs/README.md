@@ -1,4 +1,4 @@
-# Лабораторная работа № 6 - Шаблоны проектирования
+<img width="791" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/a5d31c09-1cd1-49aa-90bc-a2be262536b7"># Лабораторная работа № 6 - Шаблоны проектирования
 
 # Шаблоны проектирования Gang of Four (GoF)
 
@@ -975,17 +975,105 @@ context.setState(newState: lostState)
 context.requestState()
 ```
 
+### Команда / Command
 
-
-### 
-
-**Назначение:**
+**Назначение:**  
+Инкапсулирует запрос как объект, позволяя тем самым задавать параметры клиентов для обработки соответствующих запросов, ставить запросы в очередь или протоколировать их, а также поддерживать отмену операций.
 
 **Пример:**  
+Создаём класс-метод, будет выполнять одну операцию - реализация интерфейса.
 
-**UML:**
+**UML:**  
+<img width="791" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/0771ffb2-e189-4949-a83a-f63b313b307e">
+```PlantUML
+@startuml
+
+class Tourist {
+    + moveForward()
+    + moveBackward()
+}
+
+interface TouristCommand {
+    + execute()
+}
+
+class MoveForwardCommand {
+    - tourist: Tourist
+    + MoveForwardCommand(tourist: Tourist)
+    + execute()
+}
+
+class MoveBackwardCommand {
+    - tourist: Tourist
+    + MoveBackwardCommand(tourist: Tourist)
+    + execute()
+}
+
+TouristCommand <|.. MoveForwardCommand
+TouristCommand <|.. MoveBackwardCommand
+
+Tourist --> TouristCommand
+MoveForwardCommand --> Tourist
+MoveBackwardCommand --> Tourist
+
+@enduml
+```
 
 **Код:**
+```
+// Протокол команды
+protocol TouristCommand {
+    func execute()
+}
+
+// Класс представляющий туриста
+class Tourist {
+    func moveForward() {
+        print("Турист движется вперёд")
+    }
+
+    func moveBackward() {
+        print("Турист движется назад")
+    }
+}
+
+// Класс команды для движения вперёд
+class MoveForwardCommand: TouristCommand {
+    private let tourist: Tourist
+
+    init(tourist: Tourist) {
+        self.tourist = tourist
+    }
+
+    func execute() {
+        tourist.moveForward()
+    }
+}
+
+// Класс команды для движения назад
+class MoveBackwardCommand: TouristCommand {
+    private let tourist: Tourist
+
+    init(tourist: Tourist) {
+        self.tourist = tourist
+    }
+
+    func execute() {
+        tourist.moveBackward()
+    }
+}
+
+// Пример использования
+let tourist = Tourist()
+
+let moveForwardCommand = MoveForwardCommand(tourist: tourist)
+let moveBackwardCommand = MoveBackwardCommand(tourist: tourist)
+
+// Выполнение команд
+moveForwardCommand.execute()
+moveBackwardCommand.execute()
+```
+
 
 ### 
 
