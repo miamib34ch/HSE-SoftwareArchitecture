@@ -1074,13 +1074,114 @@ moveForwardCommand.execute()
 moveBackwardCommand.execute()
 ```
 
+### Шаблонный метод / Template Method
 
-### 
-
-**Назначение:**
+**Назначение:**  
+Шаблонный метод определяет основу алгоритма и позволяет подклассам переопределять некоторые шаги алгоритма, не изменяя его структуры в целом.
 
 **Пример:**  
+1. Определяем родительский класс `TravelPlanTemplate`, содержащий "шаблонный метод" `executeTravelPlan` и методы `startTravel`, `visitDestinations` и `endTravel`, которые выполняются в "шаблонном методе".
+2. Создаём конкретные классы, реализующие методы из `TravelPlanTemplate` - `RoadTripPlan` и `CruisePlan`.
+3. Шаблонный метод нельзя переопределить.
 
-**UML:**
+**UML:**  
+<img width="791" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/d3a1fdd0-f1c9-47fc-a65c-decb16bb6ecc">
+```PlantUML
+@startuml
+
+abstract class TravelPlanTemplate {
+    +executeTravelPlan()
+    #startTravel()
+    #visitDestinations()
+    #endTravel()
+}
+
+class RoadTripPlan {
+    +startTravel()
+    +visitDestinations()
+    +endTravel()
+}
+
+class CruisePlan {
+    +startTravel()
+    +visitDestinations()
+    +endTravel()
+}
+
+TravelPlanTemplate <|-- RoadTripPlan
+TravelPlanTemplate <|-- CruisePlan
+
+RoadTripPlan --> TravelPlanTemplate
+CruisePlan --> TravelPlanTemplate
+
+@enduml
+```
 
 **Код:**
+```Swift
+import Foundation
+
+// Абстрактный класс, определяющий "шаблонный метод".
+// Этот метод определяет последовательность шагов алгоритма, а конкретные шаги реализуются в подклассах.
+class TravelPlanTemplate {
+
+    // Шаблонный метод, представляющий собой последовательность шагов путешествия.
+    // Этот метод является финальным, чтобы подклассы не могли изменить порядок шагов.
+    final func executeTravelPlan() {
+        startTravel()    // Шаг 1: Начало путешествия
+        visitDestinations()  // Шаг 2: Посещение различных мест
+        endTravel()      // Шаг 3: Завершение путешествия
+    }
+
+    // Абстрактные методы, которые будут реализованы в подклассах.
+    func startTravel() {
+        fatalError("Метод startTravel должен быть переопределен в подклассе")
+    }
+
+    func visitDestinations() {
+        fatalError("Метод visitDestinations должен быть переопределен в подклассе")
+    }
+
+    func endTravel() {
+        fatalError("Метод endTravel должен быть переопределен в подклассе")
+    }
+}
+
+// Конкретный класс, реализующий шаблонный метод собственными шагами.
+class RoadTripPlan: TravelPlanTemplate {
+    override func startTravel() {
+        print("Начинаем дорожное путешествие.")
+    }
+
+    override func visitDestinations() {
+        print("Посещаем города и достопримечательности вдоль маршрута.")
+    }
+
+    override func endTravel() {
+        print("Завершаем дорожное путешествие.")
+    }
+}
+
+// Конкретный класс, реализующий шаблонный метод собственными шагами.
+class CruisePlan: TravelPlanTemplate {
+    override func startTravel() {
+        print("Начинаем круизное путешествие.")
+    }
+
+    override func visitDestinations() {
+        print("Плаваем по разным портам и островам.")
+    }
+
+    override func endTravel() {
+        print("Завершаем круизное путешествие.")
+    }
+}
+
+// Пример использования:
+
+let roadTrip = RoadTripPlan()
+roadTrip.executeTravelPlan()
+
+let cruise = CruisePlan()
+cruise.executeTravelPlan()
+```
