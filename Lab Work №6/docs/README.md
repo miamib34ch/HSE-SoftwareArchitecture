@@ -1657,3 +1657,40 @@ cruise.executeTravelPlan()
 **Результаты:** Подключаемые компоненты системы будут заменяемыми
 
 **Связь с другими паттернами:** Adapter, Factory, Template Method
+
+## Свойство программы
+
+### Protected Variations
+
+**Проблема:** необходимо спроектировать систему так, чтобы изменение одних её элементов не влияло на другие
+
+**Решение:** идентифицировать точки возможных изменений или неустойчивости и распределить обязанности так, чтобы обеспечить устойчивую работу системы
+
+**Код:** при изменении информации о системе, нужно будет поменять только синглтон, новая информация покажется сама везде, где нужно
+```Swift
+import Foundation
+
+// Класс туристического информационного центра
+class TouristInformationCenter {
+    static let shared = TouristInformationCenter()
+
+    private init() {
+        // Инициализационная логика здесь
+    }
+
+    func provideInfo() {
+        print("Providing tourist information")
+    }
+}
+
+// Пример использования
+
+let touristCenter1 = TouristInformationCenter.shared
+let touristCenter2 = TouristInformationCenter.shared
+
+print(touristCenter1 === touristCenter2)  // true
+```
+
+**Результаты:** внося изменения в одни части программы нет необходимости изменять другие части программы
+
+**Связь с другими паттернами:** похож на Open Closed Principleв SOLID, Singleton
