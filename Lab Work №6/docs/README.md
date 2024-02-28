@@ -286,7 +286,6 @@ TouristInformationCenter --> TouristInformationCenter : shared
 @enduml
 ```
 
-
 **Код:**
 ```Swift
 import Foundation
@@ -313,51 +312,131 @@ print(touristCenter1 === touristCenter2)  // true
 ```
 
 
+## Структурные шаблоны
 
+### Адаптер / Adapter
 
+**Назначение:**  
+Преобразует интерфейс одного класса в интерфейс другого, который ожидают клиенты. Адаптер делает возможной совместную работу классов с несовместимыми интерфейсами.
 
+**Пример:**  
 
-##
+**UML:**  
+<img width="642" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/2c7c0e66-2982-495b-8fa6-5edf7e5cc025">
+```PlantUML
+@startuml
+
+class ExternalRouteService {
+    + fetchRoute(): [String: Any]
+}
+
+class ExternalRouteServiceProvider {
+    + getExternalRouteService(): ExternalRouteService
+}
+
+class Route {
+    + planRoute()
+}
+
+class RouteAdapter {
+    - externalService: ExternalRouteService
+    + init(externalService: ExternalRouteService)
+    + planRoute()
+}
+
+ExternalRouteService --|> RouteAdapter : «use»
+RouteAdapter --|> Route : «inherit»
+
+ExternalRouteServiceProvider --|> ExternalRouteService
+
+@enduml
+```
+
+**Код:**
+```Swift
+// Класс для взаимодействия с внешним сервисом маршрутизации
+class ExternalRouteService {
+    func fetchRoute() -> [String: Any] {
+        // Симуляция получения информации о маршруте от внешнего сервиса
+        return ["name": "Внешний маршрут", "description": "Маршрут из внешнего сервиса", "waypoints": []]
+    }
+}
+
+// Поставщик внешнего сервиса маршрутизации
+class ExternalRouteServiceProvider {
+    func getExternalRouteService() -> ExternalRouteService {
+        return ExternalRouteService()
+    }
+}
+
+// Абстрактный класс для представления маршрута
+class Route {
+    func planRoute() {
+        // Базовая реализация планирования маршрута
+    }
+}
+
+// Адаптер маршрута, приспосабливающий внешний сервис маршрутизации
+class RouteAdapter: Route {
+    let externalService: ExternalRouteService
+
+    init(externalService: ExternalRouteService) {
+        self.externalService = externalService
+    }
+
+    override func planRoute() {
+        let routeInfo = externalService.fetchRoute()
+        print("Планирование маршрута: \(routeInfo["name"] ?? ""), \(routeInfo["description"] ?? "")")
+        // Дополнительная логика для адаптации информации о внешнем маршруте
+    }
+}
+
+// Использование адаптера маршрута
+let externalRouteServiceProvider = ExternalRouteServiceProvider()
+let externalRouteService = externalRouteServiceProvider.getExternalRouteService()
+
+let routeAdapter = RouteAdapter(externalService: externalRouteService) // можно подменить другим
+routeAdapter.planRoute()
+```
+
 
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
 **Код:**
 
+
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
 **Код:**
 
+
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
 **Код:**
 
-### 
 
-**Название:**
 
-**Назначение:**
 
-**UML:**
 
-**Код:**
+
 
 ##
 
