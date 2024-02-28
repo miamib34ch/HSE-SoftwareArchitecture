@@ -262,17 +262,55 @@ let fancyClient = TouristClient(factory: fancyFactory)
 fancyClient.prepareForTour()
 ```
 
+### Одиночка / Singleton
 
-### 
+**Назначение:**  
+Гарантирует, что у класса есть только один экземпляр и предоставляет к нему глобальную точку доступа.
 
-**Назначение:**
+**Пример:**  
+1. Есть класс `TouristInformationCenter`, в нём есть статическая переменная экземляра данного класса, инициализатор приватный, чтобы не могли создавать другие сущности.
+2. Вызываем методы класса по информированию через статическую переменную экземляра.
 
-**Пример:**
+**UML:**  
+<img width="1183" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/5246a7f6-d39d-4015-b8db-463f53aabdc4">  
+```PlantUML
+@startuml
+class TouristInformationCenter {
+  - shared: TouristInformationCenter
+  - constructor(): void
+  + provideInfo(): void
+  + getSharedInstance(): TouristInformationCenter
+}
 
-**UML:**
+TouristInformationCenter --> TouristInformationCenter : shared
+@enduml
+```
+
 
 **Код:**
+```Swift
+import Foundation
 
+// Класс туристического информационного центра
+class TouristInformationCenter {
+    static let shared = TouristInformationCenter()
+
+    private init() {
+        // Инициализационная логика здесь
+    }
+
+    func provideInfo() {
+        print("Providing tourist information")
+    }
+}
+
+// Пример использования
+
+let touristCenter1 = TouristInformationCenter.shared
+let touristCenter2 = TouristInformationCenter.shared
+
+print(touristCenter1 === touristCenter2)  // true
+```
 
 
 
