@@ -1185,3 +1185,310 @@ roadTrip.executeTravelPlan()
 let cruise = CruisePlan()
 cruise.executeTravelPlan()
 ```
+
+# Шаблоны проектирования GRASP
+
+## Роли
+
+### Information Expert
+
+**Проблема:** информация в системе должна обрабатываться, аккумулироваться,
+рассчитываться.
+
+**Решение:** назначить соответствующие обязанности тому классу, который её
+содержит
+
+**Код:**  
+При проектировании синглтона, как раз был создан класс-информатор
+```Swift
+import Foundation
+
+// Класс туристического информационного центра
+class TouristInformationCenter {
+    static let shared = TouristInformationCenter()
+
+    private init() {
+        // Инициализационная логика здесь
+    }
+
+    func provideInfo() {
+        print("Providing tourist information")
+    }
+}
+
+// Пример использования
+
+let touristCenter1 = TouristInformationCenter.shared
+let touristCenter2 = TouristInformationCenter.shared
+
+print(touristCenter1 === touristCenter2)  // true
+```
+**Результаты:** cоблюдается принцип инкапсуляции, уменьшается связанность классов
+
+**Связь с другими паттернами:** Model(в MVC), Singleton
+
+### Creator
+**Проблема:** экземпляры класса необходимо создавать
+
+**Решение:** назначить обязанности инстанциирования тому классу, который будет использовать соответствующие экземпляры созданных классов
+
+**Код:**  
+При реализации абстрактной фабрики как раз создавали объекты - рюкзак и палатку
+```Swift
+import Foundation
+
+// Абстрактные классы объектов
+protocol Backpack {
+    func pack()
+}
+
+protocol Tent {
+    func setup()
+}
+
+// Конкретные классы объектов
+class SimpleBackpack: Backpack {
+    func pack() {
+        print("Packing a simple backpack")
+    }
+}
+
+class FancyBackpack: Backpack {
+    func pack() {
+        print("Packing a fancy backpack")
+    }
+}
+
+class SimpleTent: Tent {
+    func setup() {
+        print("Setting up a simple tent")
+    }
+}
+
+class FancyTent: Tent {
+    func setup() {
+        print("Setting up a fancy tent")
+    }
+}
+
+// Абстрактная фабрика
+protocol TouristEquipmentFactory {
+    func createBackpack() -> Backpack
+    func createTent() -> Tent
+}
+
+// Конкретные фабрики
+class SimpleTouristEquipmentFactory: TouristEquipmentFactory {
+    func createBackpack() -> Backpack {
+        return SimpleBackpack()
+    }
+
+    func createTent() -> Tent {
+        return SimpleTent()
+    }
+}
+
+class FancyTouristEquipmentFactory: TouristEquipmentFactory {
+    func createBackpack() -> Backpack {
+        return FancyBackpack()
+    }
+
+    func createTent() -> Tent {
+        return FancyTent()
+    }
+}
+
+// Клиентский код
+class TouristClient {
+    private var backpack: Backpack
+    private var tent: Tent
+
+    init(factory: TouristEquipmentFactory) {
+        self.backpack = factory.createBackpack()
+        self.tent = factory.createTent()
+    }
+
+    func prepareForTour() {
+        backpack.pack()
+        tent.setup()
+    }
+}
+
+// Пример использования
+let simpleFactory = SimpleTouristEquipmentFactory()
+let fancyFactory = FancyTouristEquipmentFactory()
+
+let simpleClient = TouristClient(factory: simpleFactory)
+simpleClient.prepareForTour()
+
+let fancyClient = TouristClient(factory: fancyFactory)
+fancyClient.prepareForTour()
+```
+**Результаты:** соблюдается принцип инкапсуляции, уменьшается связанность классов
+
+**Связь с другими паттернами:** антипаттерн Poltergeist , Abstract Factory
+
+### Controller
+
+**Проблема:** необходимо обрабатывать входные системные события
+
+**Решение:** назначить обязанность обработки входных системных событий специальному классу
+
+**Код:**  
+Написан новый код
+```Swift
+// Структура представляющая системное событие
+struct SystemEvent {
+    let type: String
+    let data: [String: Any]
+}
+
+// Контроллер для обработки системных событий
+class SystemEventController {
+    func handleEvent(event: SystemEvent) {
+        switch event.type {
+        case "userInput":
+            handleUserInput(data: event.data)
+        case "systemError":
+            handleSystemError(data: event.data)
+        case "networkEvent":
+            handleNetworkEvent(data: event.data)
+        default:
+            print("Неизвестный тип события")
+        }
+    }
+
+    private func handleUserInput(data: [String: Any]) {
+        if let userInput = data["input"] as? String {
+            print("Обработка пользовательского ввода: \(userInput)")
+        } else {
+            print("Ошибка при обработке пользовательского ввода")
+        }
+    }
+
+    private func handleSystemError(data: [String: Any]) {
+        if let errorMessage = data["message"] as? String {
+            print("Обработка системной ошибки: \(errorMessage)")
+        } else {
+            print("Ошибка при обработке системной ошибки")
+        }
+    }
+
+    private func handleNetworkEvent(data: [String: Any]) {
+        if let eventType = data["eventType"] as? String {
+            print("Обработка сетевого события: \(eventType)")
+        } else {
+            print("Ошибка при обработке сетевого события")
+        }
+    }
+}
+
+// Пример использования контроллера
+let eventController = SystemEventController()
+
+// Примеры системных событий
+let userInputEvent = SystemEvent(type: "userInput", data: ["input": "Нажата кнопка"])
+let systemErrorEvent = SystemEvent(type: "systemError", data: ["message": "Ошибка приложения"])
+let networkEvent = SystemEvent(type: "networkEvent", data: ["eventType": "Потеря соединения"])
+
+// Обработка системных событий
+eventController.handleEvent(event: userInputEvent)
+eventController.handleEvent(event: systemErrorEvent)
+eventController.handleEvent(event: networkEvent)
+```
+
+**Результаты:** d бизнес-логике нет многопоточности
+
+**Связь с другими паттернами:** Observer
+
+### Pure Fabrication
+
+**Проблема:** необходимо обеспечивать Low Coupling и High Cohesion
+
+**Решение:** синтезировать искусственную сущность для обеспечения Low Coupling и High Cohesion
+
+**Код:**
+Написан код:
+```Swift
+// Пример Pure Fabrication - синтезированная сущность для работы с математическими операциями
+class MathUtility {
+    // Метод для сложения двух чисел
+    static func add(_ a: Int, _ b: Int) -> Int {
+        return a + b
+    }
+
+    // Метод для умножения двух чисел
+    static func multiply(_ a: Int, _ b: Int) -> Int {
+        return a * b
+    }
+}
+
+// Пример использования Pure Fabrication
+let resultSum = MathUtility.add(5, 3)
+let resultProduct = MathUtility.multiply(4, 7)
+
+print("Сумма: \(resultSum), Произведение: \(resultProduct)")
+```
+
+**Результаты:** бизнес-логика не смешивается с логикой приложения, на уровне архитектуры
+лучше поддерживаются Low Coupling и High Cohesion
+
+**Связь с другими паттернами:** Facade, Strategy
+
+### Indirection
+
+**Проблема:** необходимо распределить обязанности объектов, избежав прямого связывания
+
+**Решение:** присвоить обязанности по обеспечению связи между компонентами или службами промежуточному объекту
+
+**Код:**  
+Адаптеры как раз можно легко подменить, при это придётся переписать только присваивание объекта адаптера
+```Swift
+// Класс для взаимодействия с внешним сервисом маршрутизации
+class ExternalRouteService {
+    func fetchRoute() -> [String: Any] {
+        // Симуляция получения информации о маршруте от внешнего сервиса
+        return ["name": "Внешний маршрут", "description": "Маршрут из внешнего сервиса", "waypoints": []]
+    }
+}
+
+// Поставщик внешнего сервиса маршрутизации
+class ExternalRouteServiceProvider {
+    func getExternalRouteService() -> ExternalRouteService {
+        return ExternalRouteService()
+    }
+}
+
+// Абстрактный класс для представления маршрута
+class Route {
+    func planRoute() {
+        // Базовая реализация планирования маршрута
+    }
+}
+
+// Адаптер маршрута, приспосабливающий внешний сервис маршрутизации
+class RouteAdapter: Route {
+    let externalService: ExternalRouteService
+
+    init(externalService: ExternalRouteService) {
+        self.externalService = externalService
+    }
+
+    override func planRoute() {
+        let routeInfo = externalService.fetchRoute()
+        print("Планирование маршрута: \(routeInfo["name"] ?? ""), \(routeInfo["description"] ?? "")")
+        // Дополнительная логика для адаптации информации о внешнем маршруте
+    }
+}
+
+// Использование адаптера маршрута
+let externalRouteServiceProvider = ExternalRouteServiceProvider()
+let externalRouteService = externalRouteServiceProvider.getExternalRouteService()
+
+let routeAdapter = RouteAdapter(externalService: externalRouteService) // можно подменить другим
+routeAdapter.planRoute()
+```
+
+**Результаты:** Заменяемость частей системы, возможность их повторного использования
+
+**Связь с другими паттернами:** похож на Dependency Inversion Principleв SOLID, Adapter
