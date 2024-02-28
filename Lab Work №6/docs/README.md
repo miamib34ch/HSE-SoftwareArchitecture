@@ -400,17 +400,94 @@ let routeAdapter = RouteAdapter(externalService: externalRouteService) // мож
 routeAdapter.planRoute()
 ```
 
+### Мост / Bridge
 
-### 
-
-**Назначение:**
+**Назначение:**  
+Разделяет абстракцию от ее реализации, чтобы они могли изменяться независимо.
 
 **Пример:**  
+Класс содержит объект интерфейса, но его можно подменить при использовании объекта класса.
 
-**UML:**
+**UML:**  
+<img width="642" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/9de54ee1-e6da-4113-97cf-7609c2d296ac">
+```PlantUML
+@startuml
+interface MapRenderer {
+  + renderMap(): void
+}
+
+class SimpleMapRenderer implements MapRenderer {
+  + renderMap(): void
+}
+
+class DetailedMapRenderer implements MapRenderer {
+  + renderMap(): void
+}
+
+class Route {
+  - mapRenderer: MapRenderer
+  + setMapRenderer(renderer: MapRenderer): void
+  + planRoute(): void
+}
+
+Route *-- MapRenderer
+@enduml
+```
 
 **Код:**
+```Swift
+// Абстрактный класс для отрисовки карты
+class MapRenderer {
+    func renderMap() {
+        // Абстрактный метод
+    }
+}
 
+// Конкретный класс для отрисовки простой карты
+class SimpleMapRenderer: MapRenderer {
+    override func renderMap() {
+        print("Отрисовка простой карты")
+    }
+}
+
+// Конкретный класс для отрисовки детальной карты
+class DetailedMapRenderer: MapRenderer {
+    override func renderMap() {
+        print("Отрисовка детальной карты")
+    }
+}
+
+// Класс для представления маршрута
+class Route {
+    var mapRenderer: MapRenderer
+
+    init(mapRenderer: MapRenderer) {
+        self.mapRenderer = mapRenderer
+    }
+
+    func setMapRenderer(renderer: MapRenderer) {
+        self.mapRenderer = renderer
+    }
+
+    func planRoute() {
+        print("Планирование маршрута")
+        // Дополнительная логика
+        self.mapRenderer.renderMap()
+    }
+}
+
+// Создаем экземпляры рендереров карт
+let simpleRenderer = SimpleMapRenderer()
+let detailedRenderer = DetailedMapRenderer()
+
+// Создаем маршрут с использованием простого рендерера
+var route = Route(mapRenderer: simpleRenderer)
+route.planRoute()
+
+// Переключаем рендерер на детальный и повторно планируем маршрут
+route.setMapRenderer(renderer: detailedRenderer)
+route.planRoute()
+```
 
 ### 
 
