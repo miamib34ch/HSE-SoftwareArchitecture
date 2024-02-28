@@ -588,16 +588,87 @@ let routeWithScenicViewsAndRestStops = RestStopDecorator(decoratedRoute: routeWi
 routeWithScenicViewsAndRestStops.planRoute()
 ```
 
-### 
+### Компоновщик / Composite
 
-**Назначение:**
+**Назначение:**  
+Компонует объекты в древовидные структуры для представления иерархий «часть — целое». Позволяет клиентам единообразно трактовать индивидуальные и составные объекты.
 
 **Пример:**  
+1. Создаём абстрактный класс, который будет представлять как отдельные объекты, так и их композиции. В данном случае, `Route` служит абстрактным компонентом.
+2. Реализуем конкретные классы, представляющие листовые компоненты, в данном случае `SimpleRoute`.
+3. Реализуем классы, которые могут содержать как отдельные объекты `Route`, так и их композиции `RouteCollection`.
+4. Гарантия того, что как листовые, так и составные компоненты могут быть обработаны единообразно через общий интерфейс (метод `planRoute`).
 
-**UML:**
+**UML:**  
+<img width="539" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/9f335adf-1199-467e-b49d-d6df90a5ba02">
+```PlantUML
+@startuml
+
+class Route {
+  +planRoute(): void
+}
+
+class SimpleRoute {
+  +planRoute(): void
+}
+
+class RouteCollection {
+  -routes: List<Route>
+  +addRoute(route: Route): void
+  +planRoute(): void
+}
+
+Route <|-- SimpleRoute
+Route <|-- RouteCollection
+
+@enduml
+```
 
 **Код:**
+```Swift
+import Foundation
 
+// Абстрактный класс маршрута
+class Route {
+    func planRoute() {
+        // Абстрактный метод для планирования маршрута
+    }
+}
+
+// Простой маршрут
+class SimpleRoute: Route {
+    override func planRoute() {
+        print("Планирование простого маршрута")
+    }
+}
+
+// Коллекция маршрутов
+class RouteCollection: Route {
+    private var routes: [Route] = []
+
+    // Добавление маршрута в коллекцию
+    func addRoute(route: Route) {
+        routes.append(route)
+    }
+
+    // Планирование всех маршрутов в коллекции
+    override func planRoute() {
+        for route in routes {
+            route.planRoute()
+        }
+    }
+}
+
+// Пример использования
+let simpleRoute1 = SimpleRoute()
+let simpleRoute2 = SimpleRoute()
+
+let routeCollection = RouteCollection()
+routeCollection.addRoute(route: simpleRoute1)
+routeCollection.addRoute(route: simpleRoute2)
+
+routeCollection.planRoute()
+```
 
 
 
