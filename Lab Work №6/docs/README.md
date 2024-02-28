@@ -489,16 +489,104 @@ route.setMapRenderer(renderer: detailedRenderer)
 route.planRoute()
 ```
 
-### 
+### Декоратор / Decorator
 
-**Назначение:**
+**Назначение:**  
+Динамически добавляет объекту новые возможности. Является гибкой альтернативой наследованию для расширения функциональности.
 
 **Пример:**  
+Создаём набор классов-декораторов, которые оборачивают базовый объект, добавляя ему новые возможности. Каждый декоратор реализует тот же интерфейс, что и базовый объект, что позволяет им быть взаимозаменяемыми.
 
-**UML:**
+**UML:**  
+<img width="876" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/940240d6-485a-48da-b74b-3c563c572401">
+```PlantUML
+@startuml
+
+class Route {
+  + planRoute()
+}
+
+class TouristRoute {
+  + planRoute()
+}
+
+class RouteDecorator {
+  - decoratedRoute: Route
+  + planRoute()
+}
+
+class ScenicViewDecorator {
+  + planRoute()
+}
+
+class RestStopDecorator {
+  + planRoute()
+}
+
+Route --|> TouristRoute
+RouteDecorator <|-- ScenicViewDecorator
+RouteDecorator <|-- RestStopDecorator
+Route --|> RouteDecorator
+
+@enduml
+```
 
 **Код:**
+```Swift
+import Foundation
 
+// Протокол для определения базового класса маршрута
+protocol Route {
+    func planRoute()
+}
+
+// Конкретная реализация маршрута для туристического маршрута
+class TouristRoute: Route {
+    func planRoute() {
+        print("Планирование туристического маршрута")
+    }
+}
+
+// Базовый класс для декоратора маршрута
+class RouteDecorator: Route {
+    private let decoratedRoute: Route
+
+    init(decoratedRoute: Route) {
+        self.decoratedRoute = decoratedRoute
+    }
+
+    func planRoute() {
+        decoratedRoute.planRoute()
+    }
+}
+
+// Декоратор для добавления живописных видов к маршруту
+class ScenicViewDecorator: RouteDecorator {
+    override func planRoute() {
+        super.planRoute()
+        print("Добавление живописных видов к маршруту")
+    }
+}
+
+// Декоратор для добавления отдыхающих на маршрут
+class RestStopDecorator: RouteDecorator {
+    override func planRoute() {
+        super.planRoute()
+        print("Добавление мест отдыха к маршруту")
+    }
+}
+
+// Пример использования
+let baseTouristRoute = TouristRoute()
+
+// Декорирование маршрута с живописными видами
+let routeWithScenicViews = ScenicViewDecorator(decoratedRoute: baseTouristRoute)
+routeWithScenicViews.planRoute()
+
+// Декорирование маршрута с живописными видами и местами отдыха
+let routeWithScenicViewsAndRestStops = RestStopDecorator(decoratedRoute: routeWithScenicViews)
+routeWithScenicViewsAndRestStops.planRoute()
+```
 
 ### 
 
@@ -520,9 +608,9 @@ route.planRoute()
 
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
@@ -530,9 +618,9 @@ route.planRoute()
 
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
@@ -540,9 +628,9 @@ route.planRoute()
 
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
@@ -550,9 +638,9 @@ route.planRoute()
 
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
@@ -560,11 +648,10 @@ route.planRoute()
 
 ### 
 
-**Название:**
-
 **Назначение:**
+
+**Пример:**  
 
 **UML:**
 
 **Код:**
-
