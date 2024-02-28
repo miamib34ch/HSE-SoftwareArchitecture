@@ -1487,3 +1487,173 @@ routeAdapter.planRoute()
 **Результаты:** заменяемость частей системы, возможность их повторного использования
 
 **Связь с другими паттернами:** похож на Dependency Inversion Principleв SOLID, Adapter
+
+## Принципы разработки
+
+### Low Coupling
+
+**Проблема:** необходимо обеспечивать низкую связанность между классами
+
+**Решение:** распределить обязанности так, чтобы степень связанности оставалась низкой
+
+**Код:** адаптеры можно легко подменить, следовательно связность низкая
+```Swift
+// Класс для взаимодействия с внешним сервисом маршрутизации
+class ExternalRouteService {
+    func fetchRoute() -> [String: Any] {
+        // Симуляция получения информации о маршруте от внешнего сервиса
+        return ["name": "Внешний маршрут", "description": "Маршрут из внешнего сервиса", "waypoints": []]
+    }
+}
+
+// Поставщик внешнего сервиса маршрутизации
+class ExternalRouteServiceProvider {
+    func getExternalRouteService() -> ExternalRouteService {
+        return ExternalRouteService()
+    }
+}
+
+// Абстрактный класс для представления маршрута
+class Route {
+    func planRoute() {
+        // Базовая реализация планирования маршрута
+    }
+}
+
+// Адаптер маршрута, приспосабливающий внешний сервис маршрутизации
+class RouteAdapter: Route {
+    let externalService: ExternalRouteService
+
+    init(externalService: ExternalRouteService) {
+        self.externalService = externalService
+    }
+
+    override func planRoute() {
+        let routeInfo = externalService.fetchRoute()
+        print("Планирование маршрута: \(routeInfo["name"] ?? ""), \(routeInfo["description"] ?? "")")
+        // Дополнительная логика для адаптации информации о внешнем маршруте
+    }
+}
+
+// Использование адаптера маршрута
+let externalRouteServiceProvider = ExternalRouteServiceProvider()
+let externalRouteService = externalRouteServiceProvider.getExternalRouteService()
+
+let routeAdapter = RouteAdapter(externalService: externalRouteService) // можно подменить другим
+routeAdapter.planRoute()
+```
+
+**Результаты:** отсутствует необходимость согласованных изменений классов, классы становятся более пригодны для повторного использования, классы более легко поддерживать
+
+**Связь с другими паттернами:** Pure Fabrication, Indirection
+
+### High Cohesion
+
+**Проблема:** необходимо обеспечивать выполнение объектами разнородных функций
+
+**Решение:** распределить обязанность так, чтобы обеспечить высокое зацепление – содержание однородной бизнес-логики
+
+**Код:** код для паттерна Pure Fabrication, который выполняет как раз этот принцип
+```Swift
+// Пример Pure Fabrication - синтезированная сущность для работы с математическими операциями
+class MathUtility {
+    // Метод для сложения двух чисел
+    static func add(_ a: Int, _ b: Int) -> Int {
+        return a + b
+    }
+
+    // Метод для умножения двух чисел
+    static func multiply(_ a: Int, _ b: Int) -> Int {
+        return a * b
+    }
+}
+
+// Пример использования Pure Fabrication
+let resultSum = MathUtility.add(5, 3)
+let resultProduct = MathUtility.multiply(4, 7)
+
+print("Сумма: \(resultSum), Произведение: \(resultProduct)")
+```
+
+**Результаты:** несколько контекстов смешивается в одном классе, классы более легко поддерживать
+
+**Связь с другими паттернами:** похож на Single Responsibility Principleв SOLID, Pure Fabrication
+
+### Polymorphism
+
+**Проблема:** необходимо обрабатывать различные варианты поведения на основании типа, допуская замену частей системы
+
+**Решение:** распределить обязанности между классами с использованием полиморфных операций, оставив каждой внешней системе свой интерфейс
+
+**Код:** в шаблонном методе как раз писал код с использованием полиморфных операций, шаги алгоритма можно легко подменять
+```Swift
+import Foundation
+
+// Абстрактный класс, определяющий "шаблонный метод".
+// Этот метод определяет последовательность шагов алгоритма, а конкретные шаги реализуются в подклассах.
+class TravelPlanTemplate {
+
+    // Шаблонный метод, представляющий собой последовательность шагов путешествия.
+    // Этот метод является финальным, чтобы подклассы не могли изменить порядок шагов.
+    final func executeTravelPlan() {
+        startTravel()    // Шаг 1: Начало путешествия
+        visitDestinations()  // Шаг 2: Посещение различных мест
+        endTravel()      // Шаг 3: Завершение путешествия
+    }
+
+    // Абстрактные методы, которые будут реализованы в подклассах.
+    func startTravel() {
+        fatalError("Метод startTravel должен быть переопределен в подклассе")
+    }
+
+    func visitDestinations() {
+        fatalError("Метод visitDestinations должен быть переопределен в подклассе")
+    }
+
+    func endTravel() {
+        fatalError("Метод endTravel должен быть переопределен в подклассе")
+    }
+}
+
+// Конкретный класс, реализующий шаблонный метод собственными шагами.
+class RoadTripPlan: TravelPlanTemplate {
+    override func startTravel() {
+        print("Начинаем дорожное путешествие.")
+    }
+
+    override func visitDestinations() {
+        print("Посещаем города и достопримечательности вдоль маршрута.")
+    }
+
+    override func endTravel() {
+        print("Завершаем дорожное путешествие.")
+    }
+}
+
+// Конкретный класс, реализующий шаблонный метод собственными шагами.
+class CruisePlan: TravelPlanTemplate {
+    override func startTravel() {
+        print("Начинаем круизное путешествие.")
+    }
+
+    override func visitDestinations() {
+        print("Плаваем по разным портам и островам.")
+    }
+
+    override func endTravel() {
+        print("Завершаем круизное путешествие.")
+    }
+}
+
+// Пример использования:
+
+let roadTrip = RoadTripPlan()
+roadTrip.executeTravelPlan()
+
+let cruise = CruisePlan()
+cruise.executeTravelPlan()
+```
+
+**Результаты:** Подключаемые компоненты системы будут заменяемыми
+
+**Связь с другими паттернами:** Adapter, Factory, Template Method
