@@ -10,9 +10,9 @@
 Определяет интерфейс для создания объекта, но оставляет подклассам решение о том, какой класс инстанцировать.  
 
 **Пример:**  
-Есть интерфейс объекта `Route`, есть классы объектов, которые исполняют интерфейс `FullRoute` и `DemoRoute`.  
-Есть интерфейс фабрики `RouteFactory`, в которой есть метод создания маршрута, есть классы фабрики, которые создают маршруты `FullRouteFactory` и `DemoRouteFactory`.  
-Благодаря тому, что `FullRoute` и `DemoRoute` наследюутся от `Route`, то метод фабрики `RouteFactory` необязан реализовать каждый тип объекта, а только Route, остальное уже решают подклассы.
+1. Есть интерфейс объекта `Route`, есть классы объектов, которые исполняют интерфейс `FullRoute` и `DemoRoute`.  
+2. Есть интерфейс фабрики `RouteFactory`, в которой есть метод создания маршрута, есть классы фабрики, которые создают маршруты `FullRouteFactory` и `DemoRouteFactory`.  
+3. Благодаря тому, что `FullRoute` и `DemoRoute` наследюутся от `Route`, то метод фабрики `RouteFactory` необязан реализовать каждый тип объекта, а только Route, остальное уже решают подклассы.
 
 **UML:**  
 <img width="1255" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/744f9148-077a-4396-aef1-fd7091d95836">  
@@ -104,21 +104,180 @@ let demoRoute: Route = demoRouteFactory.createRoute()
 demoRoute.planRoute()
 ```
 
+### Абстрактная фабрика / Abstract Factory
+
+**Назначение:**  
+Предоставляет интерфейс для создания семейств связанных или зависимых объектов без указания их конкретных классов.
+
+**Пример:**  
+1. Вводятся два протокола: `Backpack` и `Tent`, cоздаются конкретные классы, реализующие эти протоколы. В данном случае, `SimpleBackpack` и `FancyBackpack` - это два варианта рюкзака, а `SimpleTent` и `FancyTent` - два варианта палатки. Каждый из них реализует соответствующие методы протоколов.  
+2. Создается протокол `TouristEquipmentFactory`, предоставляющий интерфейс для создания связанных объектов рюкзака и палатки. Cоздаются две конкретные реализации абстрактной фабрики: `SimpleTouristEquipmentFactory` и `FancyTouristEquipmentFactory`. Каждая из этих фабрик реализует методы `createBackpack` и `createTent`, возвращая соответствующие объекты рюкзака и палатки.
+3. Есть класс клиент `TouristClient`, который не содержит конкретные объекты палатки и рюкзака (может быть любой) и объекта фабрики (может быть любая). И уже, в зависимости от использования класса клиента, будет определяться, какие именно у него рюкзак и палатка.
+
+**UML:**  
+<img width="1380" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/4abef3a9-ba3b-49eb-a322-8a42e6c74549">  
+```PlantUML
+@startuml
+interface TouristEquipmentFactory {
+  + createBackpack(): Backpack
+  + createTent(): Tent
+}
+
+class Backpack {
+  + pack(): void
+}
+
+class Tent {
+  + setup(): void
+}
+
+class SimpleBackpack implements Backpack {
+  + pack(): void
+}
+
+class FancyBackpack implements Backpack {
+  + pack(): void
+}
+
+class SimpleTent implements Tent {
+  + setup(): void
+}
+
+class FancyTent implements Tent {
+  + setup(): void
+}
+
+class SimpleTouristEquipmentFactory implements TouristEquipmentFactory {
+  + createBackpack(): SimpleBackpack
+  + createTent(): SimpleTent
+}
+
+class FancyTouristEquipmentFactory implements TouristEquipmentFactory {
+  + createBackpack(): FancyBackpack
+  + createTent(): FancyTent
+}
+
+class TouristClient {
+  - backpack: Backpack
+  - tent: Tent
+  + prepareForTour(): void
+}
+
+TouristClient --> TouristEquipmentFactory
+TouristClient --> Backpack
+TouristClient --> Tent
+
+@enduml
+```
+
+**Код:**
+```Swift
+import Foundation
+
+// Абстрактные классы объектов
+protocol Backpack {
+    func pack()
+}
+
+protocol Tent {
+    func setup()
+}
+
+// Конкретные классы объектов
+class SimpleBackpack: Backpack {
+    func pack() {
+        print("Packing a simple backpack")
+    }
+}
+
+class FancyBackpack: Backpack {
+    func pack() {
+        print("Packing a fancy backpack")
+    }
+}
+
+class SimpleTent: Tent {
+    func setup() {
+        print("Setting up a simple tent")
+    }
+}
+
+class FancyTent: Tent {
+    func setup() {
+        print("Setting up a fancy tent")
+    }
+}
+
+// Абстрактная фабрика
+protocol TouristEquipmentFactory {
+    func createBackpack() -> Backpack
+    func createTent() -> Tent
+}
+
+// Конкретные фабрики
+class SimpleTouristEquipmentFactory: TouristEquipmentFactory {
+    func createBackpack() -> Backpack {
+        return SimpleBackpack()
+    }
+
+    func createTent() -> Tent {
+        return SimpleTent()
+    }
+}
+
+class FancyTouristEquipmentFactory: TouristEquipmentFactory {
+    func createBackpack() -> Backpack {
+        return FancyBackpack()
+    }
+
+    func createTent() -> Tent {
+        return FancyTent()
+    }
+}
+
+// Клиентский код
+class TouristClient {
+    private var backpack: Backpack
+    private var tent: Tent
+
+    init(factory: TouristEquipmentFactory) {
+        self.backpack = factory.createBackpack()
+        self.tent = factory.createTent()
+    }
+
+    func prepareForTour() {
+        backpack.pack()
+        tent.setup()
+    }
+}
+
+// Пример использования
+let simpleFactory = SimpleTouristEquipmentFactory()
+let fancyFactory = FancyTouristEquipmentFactory()
+
+let simpleClient = TouristClient(factory: simpleFactory)
+simpleClient.prepareForTour()
+
+let fancyClient = TouristClient(factory: fancyFactory)
+fancyClient.prepareForTour()
+```
+
+
 ### 
 
 **Назначение:**
+
+**Пример:**
 
 **UML:**
 
 **Код:**
 
-### 
 
-**Назначение:**
 
-**UML:**
 
-**Код:**
+
+
 
 ##
 
