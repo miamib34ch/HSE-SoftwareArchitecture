@@ -671,21 +671,121 @@ routeCollection.planRoute()
 ```
 
 
+## Поведенческие шаблоны
 
+### Стратегия / Strategy
 
-
-
-##
-
-### 
-
-**Назначение:**
+**Назначение:**  
+Определяет семейство алгоритмов, инкапсулирует каждый из них и делает их взаимозаменяемыми. Стратегия позволяет изменять алгоритмы независимо от клиентов, которые ими пользуются.
 
 **Пример:**  
+Клиент выполняет одно действие, но с разными классами одного интерфейса
 
-**UML:**
+**UML:**  
+<img width="1206" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/19ea0756-3eed-4c13-bfb2-9a16792cbd30">
+```PlantUML
+@startuml
+
+interface NavigationStrategy {
+    + navigate(): void
+}
+
+class WalkingStrategy {
+    + navigate(): void
+}
+
+class CyclingStrategy {
+    + navigate(): void
+}
+
+class DrivingStrategy {
+    + navigate(): void
+}
+
+class Navigator {
+    - navigationStrategy: NavigationStrategy
+    + setNavigationStrategy(strategy: NavigationStrategy): void
+    + navigate(): void
+}
+
+Navigator --|> NavigationStrategy
+Navigator *-down-> WalkingStrategy: strategy
+Navigator *-down-> CyclingStrategy: strategy
+Navigator *-down-> DrivingStrategy: strategy
+
+@enduml
+```
 
 **Код:**
+```Swift
+// Протокол для стратегии навигации
+protocol NavigationStrategy {
+    func navigate()
+}
+
+// Конкретные классы стратегий
+
+class WalkingStrategy: NavigationStrategy {
+    func navigate() {
+        print("Используется стратегия пешеходной навигации")
+    }
+}
+
+class CyclingStrategy: NavigationStrategy {
+    func navigate() {
+        print("Используется стратегия велосипедной навигации")
+    }
+}
+
+class DrivingStrategy: NavigationStrategy {
+    func navigate() {
+        print("Используется стратегия автомобильной навигации")
+    }
+}
+
+// Класс навигатора
+
+class Navigator {
+    var navigationStrategy: NavigationStrategy
+
+    init(navigationStrategy: NavigationStrategy) {
+        self.navigationStrategy = navigationStrategy
+    }
+
+    // Метод для установки новой стратегии навигации
+    func setNavigationStrategy(strategy: NavigationStrategy) {
+        navigationStrategy = strategy
+    }
+
+    // Метод для выполнения навигации с текущей стратегией
+    func navigate() {
+        navigationStrategy.navigate()
+    }
+}
+
+// Пример использования
+
+// Создаем экземпляры стратегий
+let walkingStrategy = WalkingStrategy()
+let cyclingStrategy = CyclingStrategy()
+let drivingStrategy = DrivingStrategy()
+
+// Создаем экземпляр навигатора с начальной стратегией (например, пешеходной)
+let navigator = Navigator(navigationStrategy: walkingStrategy)
+
+// Выполняем навигацию с текущей стратегией
+navigator.navigate()
+
+// Меняем стратегию на велосипедную и выполняем навигацию
+navigator.setNavigationStrategy(strategy: cyclingStrategy)
+navigator.navigate()
+
+// Меняем стратегию на автомобильную и выполняем навигацию
+navigator.setNavigationStrategy(strategy: drivingStrategy)
+navigator.navigate()
+```
+
+
 
 ### 
 
