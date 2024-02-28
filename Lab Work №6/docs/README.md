@@ -1,5 +1,36 @@
 # Лабораторная работа № 6 - Шаблоны проектирования
 
+Оглавление:  
+1. [Шаблоны проектирования Gang of Four (GoF)](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#шаблоны-проектирования-gang-of-four-gof)  
+   1.1 [Порождающие шаблоны](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#порождающие-шаблоны)  
+       1.1.1 [Фабричный метод / Factory Method](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#фабричный-метод--factory-method)  
+       1.1.2 [Абстрактная фабрика / Abstract Factory](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#абстрактная-фабрика--abstract-factory)  
+       1.1.3 [Одиночка / Singleton](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#одиночка--singleton)  
+   1.2 [Структурные шаблоны](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#структурные-шаблоны)  
+       1.2.1 [Адаптер / Adapter](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#адаптер--adapter)  
+       1.2.2 [Мост / Bridge](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#мост--bridge)  
+       1.2.3 [Декоратор / Decorator](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#декоратор--decorator)  
+       1.2.4 [Компоновщик / Composite](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#компоновщик--composite)  
+   1.3 [Поведенческие шаблоны](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#поведенческие-шаблоны)  
+       1.2.1 [Стратегия / Strategy](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#стратегия--strategy)  
+       1.3.2 [Наблюдатель / Observer](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#наблюдатель--observer)  
+       1.3.3 [Состояние / State](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#состояние--state)  
+       1.3.4 [Команда / Command](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#команда--command)  
+       1.3.5 [Шаблонный метод / Template Method](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#шаблонный-метод--template-method)  
+3. [Шаблоны проектирования GRASP](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#шаблоны-проектирования-grasp)   
+   2.1 [Роли](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#роли)  
+       2.1.1 [Information Expert](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#information-expert)  
+       2.1.2 [Creator](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#creator)  
+       2.1.3 [Controller](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#controller)  
+       2.1.4 [Pure Fabrication](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#pure-fabrication)  
+       2.1.5 [Indirection](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#indirection)  
+   2.2 [Принципы разработки](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#принципы-разработки)  
+       2.2.1 [Low Coupling](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#low-coupling)  
+       2.2.2 [High Cohesion](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#high-cohesion)  
+       2.2.3 [Polymorphism](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#polymorphism)  
+   2.3 [Свойство программы](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#свойство-программы)  
+       2.3.1 [Protected Variations](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#protected-variations)
+
 # Шаблоны проектирования Gang of Four (GoF)
 
 ## Порождающие шаблоны
