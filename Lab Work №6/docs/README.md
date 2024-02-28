@@ -785,17 +785,95 @@ navigator.setNavigationStrategy(strategy: drivingStrategy)
 navigator.navigate()
 ```
 
+### Наблюдатель / Observer
 
-
-### 
-
-**Назначение:**
+**Назначение:**  
+Определяет зависимость "один ко многим" между объектами так, что при изменении состояния одного объекта все зависящие от него оповещаются и обновляются автоматически.
 
 **Пример:**  
+1. Есть два класса: `TouristObserver` и `TouristSubject`. Класс `TouristObserver` имеет метод `updateLocation`, а класс `TouristSubject` содержит список наблюдателей и методы для добавления, удаления и уведомления наблюдателей.
+2. Когда вызываем уведомление, то у всех наблюдателей вызывается метод `updateLocation`.
 
-**UML:**
+**UML:**  
+<img width="770" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/10ff1f03-9d9d-40c2-ab3a-8b7dc30e07c9">
+```PlantUML
+@startuml
+class TouristObserver {
+    + updateLocation(latitude: double, longitude: double): void
+}
+
+class TouristSubject {
+    - observers: List<TouristObserver>
+    + addObserver(observer: TouristObserver): void
+    + removeObserver(observer: TouristObserver): void
+    + notifyObservers(latitude: double, longitude: double): void
+}
+
+TouristObserver --|> TouristSubject
+@enduml
+```
 
 **Код:**
+```Swift
+import Foundation
+
+// Наблюдатель
+protocol TouristObserver: AnyObject {
+    func updateLocation(latitude: Double, longitude: Double)
+}
+
+// Субъект (Турист)
+class TouristSubject {
+    private var observers: [TouristObserver] = []
+
+    // Добавить наблюдателя
+    func addObserver(observer: TouristObserver) {
+        observers.append(observer)
+    }
+
+    // Удалить наблюдателя
+    func removeObserver(observer: TouristObserver) {
+        observers.removeAll { $0 === observer }
+    }
+
+    // Уведомить наблюдателей о изменении местоположения
+    func notifyObservers(latitude: Double, longitude: Double) {
+        for observer in observers {
+            observer.updateLocation(latitude: latitude, longitude: longitude)
+        }
+    }
+}
+
+// Пример использования
+class ExampleTourist: TouristObserver {
+    let name: String
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func updateLocation(latitude: Double, longitude: Double) {
+        print("\(name) получил обновление местоположения: Широта \(latitude), Долгота \(longitude)")
+    }
+}
+
+// Создаем объект субъекта (Турист)
+let touristSubject = TouristSubject()
+
+// Создаем и добавляем наблюдателей
+let observer1 = ExampleTourist(name: "Наблюдатель 1")
+let observer2 = ExampleTourist(name: "Наблюдатель 2")
+
+touristSubject.addObserver(observer: observer1)
+touristSubject.addObserver(observer: observer2)
+
+// Посылаем уведомление об изменении местоположения
+touristSubject.notifyObservers(latitude: 55.7558, longitude: 37.6176)
+
+// Результат в консоли:
+// Наблюдатель 1 получил обновление местоположения: Широта 55.7558, Долгота 37.6176
+// Наблюдатель 2 получил обновление местоположения: Широта 55.7558, Долгота 37.6176
+```
 
 ### 
 
