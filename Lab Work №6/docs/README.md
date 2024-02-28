@@ -875,15 +875,107 @@ touristSubject.notifyObservers(latitude: 55.7558, longitude: 37.6176)
 // Наблюдатель 2 получил обновление местоположения: Широта 55.7558, Долгота 37.6176
 ```
 
-### 
+### Состояние / State
 
-**Назначение:**
+**Назначение:**  
+Позволяет объекту варьировать свое поведение в зависимости от внутреннего состояния. Извне создается впечатление, что изменился класс объекта. 
 
 **Пример:**  
+Объект делегирует выполнение своих операций текущему объекту-состоянию.
 
-**UML:**
+**UML:**  
+<img width="770" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/83c47410-f690-4ebe-b5be-cc2932e96f11">
+```PlantUML
+@startuml
+
+class TouristState {
+  {abstract} +handle()
+}
+
+class NormalTouristState {
+  +handle()
+}
+
+class LostTouristState {
+  +handle()
+}
+
+class TouristStateContext {
+  -state: TouristState
+  +init(initialState: TouristState)
+  +setState(newState: TouristState)
+  +requestState()
+}
+
+TouristState <|-- NormalTouristState
+TouristState <|-- LostTouristState
+TouristStateContext *-- TouristState
+
+@enduml
+```
 
 **Код:**
+```Swift
+import Foundation
+
+// Базовый класс состояния туриста
+class TouristState {
+    func handle() {
+        // Базовая реализация обработки состояния
+    }
+}
+
+// Конкретное состояние: турист в нормальном состоянии
+class NormalTouristState: TouristState {
+    override func handle() {
+        print("Турист находится в нормальном состоянии")
+    }
+}
+
+// Конкретное состояние: турист потерян
+class LostTouristState: TouristState {
+    override func handle() {
+        print("Турист потерян")
+    }
+}
+
+// Класс контекста, который использует состояние туриста
+class TouristStateContext {
+    private var state: TouristState
+    
+    init(initialState: TouristState) {
+        self.state = initialState
+    }
+    
+    func setState(newState: TouristState) {
+        self.state = newState
+    }
+    
+    func requestState() {
+        self.state.handle()
+    }
+}
+
+// Пример использования
+
+// Создаем объекты состояний
+let normalState = NormalTouristState()
+let lostState = LostTouristState()
+
+// Создаем объект контекста с начальным состоянием
+let context = TouristStateContext(initialState: normalState)
+
+// Вызываем метод requestState для обработки текущего состояния
+context.requestState()
+
+// Меняем состояние
+context.setState(newState: lostState)
+
+// Снова вызываем метод requestState для обработки нового состояния
+context.requestState()
+```
+
+
 
 ### 
 
