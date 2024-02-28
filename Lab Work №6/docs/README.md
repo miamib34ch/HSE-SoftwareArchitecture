@@ -1,4 +1,4 @@
-<img width="791" alt="image" src="https://github.com/miamib34ch/HSE-SoftwareArchitecture/assets/77894393/a5d31c09-1cd1-49aa-90bc-a2be262536b7"># Лабораторная работа № 6 - Шаблоны проектирования
+# Лабораторная работа № 6 - Шаблоны проектирования
 
 # Шаблоны проектирования Gang of Four (GoF)
 
