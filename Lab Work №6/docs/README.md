@@ -1020,7 +1020,7 @@ MoveBackwardCommand --> Tourist
 ```
 
 **Код:**
-```
+```Swift
 // Протокол команды
 protocol TouristCommand {
     func execute()
