@@ -1,7 +1,7 @@
 # Лабораторная работа № 6 - Шаблоны проектирования
 
 Оглавление:  
-- [Шаблоны проектирования Gang of Four (GoF)](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#шаблоны-проектирования-gang-of-four-gof)  
+- [Шаблоны проектирования Gang of Four (GoF)](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/main/Lab%20Work%20№6/docs/README.md#шаблоны-проектирования-gang-of-four-gof)  
    - [Порождающие шаблоны](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#порождающие-шаблоны)  
       - [Фабричный метод / Factory Method](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#фабричный-метод--factory-method)  
       - [Абстрактная фабрика / Abstract Factory](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#абстрактная-фабрика--abstract-factory)  
@@ -29,7 +29,7 @@
       - [High Cohesion](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#high-cohesion)  
       - [Polymorphism](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#polymorphism)  
    - [Свойство программы](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#свойство-программы)  
-      - [Protected Variations](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/LabWork6/Lab%20Work%20№6/docs/README.md#protected-variations)
+      - [Protected Variations](https://github.com/miamib34ch/HSE-SoftwareArchitecture/blob/main/Lab%20Work%20№6/docs/README.md#protected-variations)
 
 # Шаблоны проектирования Gang of Four (GoF)
 
